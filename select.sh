@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 #
 ##Script for help to "LCTT"	author:jiwenkangatech@foxmail.com
 
@@ -13,28 +13,29 @@ fi
 }
 function maths_now() {
 if [  -d "./sources/" ];then
-	for tech in ./sources/tech/		# 这里想写成一个变量一个文件夹，暂时不知道怎么实现。
-		do
-			echo $tech 目录共有$($(command -v find)  $tech  -type f | $( command -v grep) -v README.md |  $(command -v wc) -l)个文件
-		done
-	for talk in ./sources/talk/		# 这里想写成一个变量一个文件夹，暂时不知道怎么实现。
-		do
-			echo $talk 目录共有$($(command -v find)  $talk  -type f | $( command -v grep) -v README.md |  $(command -v wc) -l)个文件
-		done
+	tech=./sources/tech/			
+	echo $tech 目录共有$($(command -v find)  $tech  -type f | $( command -v grep) -v README.md |  $(command -v wc) -l)个文件
+	talk=./sources/talk/	
+	echo $talk 目录共有$($(command -v find)  $talk  -type f | $( command -v grep) -v README.md |  $(command -v wc) -l)个文件
 else
 	echo "Missing folders"	
 	command exit 1
 fi
 }
 function find_translated() {
-cd $talk && grep -RHi 翻译中 | grep -v LCTT翻译规范.md | grep -v .git | cut -d ":" -f 1 > /tmp/TranslateProject_talk.txt && cd ../..
-cd $talk && grep -RHi fanyi | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_talk.txt && cd ../..
-cd $talk && grep -RHi translat | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_talk.txt && cd ../..
-cd $tech && grep -RHi 翻译中 | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 > /tmp/TranslateProject_tech.txt && cd ../..
-cd $tech && grep -RHi fanyi | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_tech.txt && cd ../..
-cd $tech && grep -RHi translat | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_tech.txt && cd ../..
-find $talk -type f | grep -v README.md |grep -v "$(cat /tmp/TranslateProject_talk.txt  | uniq  | cut -d "/" -f 3 |sed 's/^/"&/g' | sed 's/$/"/g')" > /tmp/TranslateProject.txt #这样写肯定不好，并且最好一条会有漏网之鱼
-find $tech -type f |grep -v README.md | grep  -v "$( cat /tmp/TranslateProject_tech.txt  | uniq  | cut -d "/" -f 3 |sed 's/^/"&/g' | sed 's/$/"/g')" >> /tmp/TranslateProject.txt #这样写肯定不好，并且最好一条会有漏网之鱼
+	cat /dev/null > /tmp/TranslateProject_talk.txt
+	cat /dev/null > /tmp/TranslateProject_tech.txt
+	for i in translating fanyi 翻译中 申请翻译
+	do
+		cd $talk && grep -RHi $i | grep -v LCTT翻译规范.md | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_talk.txt && cd ../..
+		cd $tech && grep -RHi $i | grep -v LCTT翻译规范.md | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_tech.txt && cd ../..
+	done	
+}
+function zuihou(){
+cat /dev/null > /tmp/TranslateProject.txt
+find $tech -type f |grep -v README.md | grep  -v "$( cat /tmp/TranslateProject_tech.txt  | uniq  | cut -d "/" -f 3 )" >> /tmp/TranslateProject.txt
+find $talk -type f |grep -v README.md | grep  -v "$( cat /tmp/TranslateProject_talk.txt  | uniq  | cut -d "/" -f 3 )" >> /tmp/TranslateProject.txt
+#这样写肯定不好，并且最好一条会有漏网之鱼
 }
 ##其他的小功能
 function first_display() {
@@ -51,6 +52,7 @@ enter_dir	# 确定用户在 “TranslateProject” 目录
 first_display	# 给用户展示 “Linux中国翻译规范” 文件
 maths_now	# 告知用户 “LCTT” 总共有多少文件（全部）
 find_translated	# 综合 "keyword" 至 /tmp/TranslateProject.txt 文件
+zuihou
 echo $tech 已翻译$(cat /tmp/TranslateProject_tech.txt | wc -l)个文章
 echo $talk 已翻译$(cat /tmp/TranslateProject_talk.txt | wc -l)个文章
 	echo -e "\n" 
