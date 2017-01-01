@@ -21,6 +21,9 @@ if [  -d "./sources/" ];then
 		do
 			echo $talk 目录共有$($(command -v find)  $talk  -type f | $( command -v grep) -v README.md |  $(command -v wc) -l)个文件
 		done
+else
+	echo "Missing folders"	
+	command exit 1
 fi
 }
 function find_translated() {
@@ -30,8 +33,8 @@ cd $talk && grep -RHi translating | grep -v LCTT翻译规范.md  | grep -v .git 
 cd $tech && grep -RHi 翻译中 | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 > /tmp/TranslateProject_tech.txt && cd ../..
 cd $tech && grep -RHi fanyi | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_tech.txt && cd ../..
 cd $tech && grep -RHi translating | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_tech.txt && cd ../..
-cat /tmp/TranslateProject_talk.txt  | uniq  | cut -d "/" -f 3 > /tmp/TranslateProject.txt  #这样写肯定不好，并且最好一条会有漏网之鱼
-cat /tmp/TranslateProject_tech.txt  | uniq  | cut -d "/" -f 3 >> /tmp/TranslateProject.txt  #这样写肯定不好，并且最好一条会有漏网之鱼
+find $talk -type f | grep -v README.md |grep -v "$(cat /tmp/TranslateProject_talk.txt  | uniq  | cut -d "/" -f 3 |sed 's/^/"&/g' | sed 's/$/"/g')" > /tmp/TranslateProject.txt #这样写肯定不好，并且最好一条会有漏网之鱼
+find $tech -type f |grep -v README.md | grep  -v "$( cat /tmp/TranslateProject_tech.txt  | uniq  | cut -d "/" -f 3 |sed 's/^/"&/g' | sed 's/$/"/g')" >> /tmp/TranslateProject.txt #这样写肯定不好，并且最好一条会有漏网之鱼
 }
 ##其他的小功能
 function first_display() {
@@ -51,4 +54,4 @@ find_translated	# 综合 "keyword" 至 /tmp/TranslateProject.txt 文件
 echo $tech 已被翻译$(cat /tmp/TranslateProject_tech.txt | wc -l)个文件
 echo $talk 已被翻译$(cat /tmp/TranslateProject_talk.txt | wc -l)个文件
 	echo -e "\n" 
-cat /tmp/TranslateProject.txt
+cat /tmp/TranslateProject.txt | less
