@@ -29,10 +29,10 @@ fi
 function find_translated() {
 cd $talk && grep -RHi 翻译中 | grep -v LCTT翻译规范.md | grep -v .git | cut -d ":" -f 1 > /tmp/TranslateProject_talk.txt && cd ../..
 cd $talk && grep -RHi fanyi | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_talk.txt && cd ../..
-cd $talk && grep -RHi translating | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_talk.txt && cd ../..
+cd $talk && grep -RHi translat | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_talk.txt && cd ../..
 cd $tech && grep -RHi 翻译中 | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 > /tmp/TranslateProject_tech.txt && cd ../..
 cd $tech && grep -RHi fanyi | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_tech.txt && cd ../..
-cd $tech && grep -RHi translating | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_tech.txt && cd ../..
+cd $tech && grep -RHi translat | grep -v LCTT翻译规范.md  | grep -v .git | cut -d ":" -f 1 >> /tmp/TranslateProject_tech.txt && cd ../..
 find $talk -type f | grep -v README.md |grep -v "$(cat /tmp/TranslateProject_talk.txt  | uniq  | cut -d "/" -f 3 |sed 's/^/"&/g' | sed 's/$/"/g')" > /tmp/TranslateProject.txt #这样写肯定不好，并且最好一条会有漏网之鱼
 find $tech -type f |grep -v README.md | grep  -v "$( cat /tmp/TranslateProject_tech.txt  | uniq  | cut -d "/" -f 3 |sed 's/^/"&/g' | sed 's/$/"/g')" >> /tmp/TranslateProject.txt #这样写肯定不好，并且最好一条会有漏网之鱼
 }
@@ -51,7 +51,7 @@ enter_dir	# 确定用户在 “TranslateProject” 目录
 first_display	# 给用户展示 “Linux中国翻译规范” 文件
 maths_now	# 告知用户 “LCTT” 总共有多少文件（全部）
 find_translated	# 综合 "keyword" 至 /tmp/TranslateProject.txt 文件
-echo $tech 已被翻译$(cat /tmp/TranslateProject_tech.txt | wc -l)个文件
-echo $talk 已被翻译$(cat /tmp/TranslateProject_talk.txt | wc -l)个文件
+echo $tech 已翻译$(cat /tmp/TranslateProject_tech.txt | wc -l)个文章
+echo $talk 已翻译$(cat /tmp/TranslateProject_talk.txt | wc -l)个文章
 	echo -e "\n" 
 cat /tmp/TranslateProject.txt | less
