@@ -2,7 +2,7 @@
 
 Script to help "LCTT" TranslateProject
 
-![select gif](https://github.com/erlinux/TranslateProjectTools/blob/master/Github.gif?raw=true)
+![select gif](https://raw.githubusercontent.com/erlinux/TranslateProjectTools/master/Github.gif)
 
 # Installation
 
