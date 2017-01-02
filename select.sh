@@ -53,5 +53,5 @@ find_translated	# 综合 "keyword" 至 /tmp/TranslateProject.txt 文件
 translated	# 告知用户 “LCTT” 剩余有多少文章（被翻译）	
 $(command -v echo) -e "\n" 
 cat /tmp/TranslateProject.txt | less
-$(command -v echo) $tech 有$(cat /tmp/TranslateProject_tech.txt | wc -l)	个 “LCTTer” 与你共同努力
-$(command -v echo) $talk 有$(cat /tmp/TranslateProject_talk.txt | wc -l)	个 “LCTTer” 与你共同努力
+$(command -v echo) -e "\e[1;42m $tech 有	$(cat /tmp/TranslateProject_tech.txt | wc -l)	个 “LCTTer” 与你共同努力 \e[0m"
+$(command -v echo) -e "\e[1;42m $talk 有	$(cat /tmp/TranslateProject_talk.txt | wc -l)	个 “LCTTer” 与你共同努力 \e[0m"
