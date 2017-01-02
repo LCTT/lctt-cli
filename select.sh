@@ -51,6 +51,7 @@ function first_display() {
 enter_dir	# 确定用户在 “TranslateProject” 目录
 first_display	# 给用户展示 “Linux中国翻译规范” 文件
 find_translated	# 综合 "keyword" 至 /tmp/TranslateProject.txt 文件
-$(command -v echo) -e "\n"  && cat /tmp/TranslateProject.txt | less	# 告知用户 “LCTT” 剩余有多少文章（未被翻译）
-maths_now	# 告知用户 “LCTT” 总共有多少文件（全部文章）
 translated	# 告知用户 “LCTT” 剩余有多少文章（被翻译）
+cat /tmp/TranslateProject.txt | less	# 告知用户 “LCTT” 剩余有多少文章（未被翻译）
+maths_now	# 告知用户 “LCTT” 总共有多少文件（全部文章）
+
