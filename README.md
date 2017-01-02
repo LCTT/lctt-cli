@@ -7,5 +7,6 @@ Script to help "LCTT" TranslateProject
 # Installation
 
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/erlinux/TranslateProjectTools/master/select.sh)"
-sh -c "$(wget https://raw.githubusercontent.com/erlinux/TranslateProjectTools/master/select.sh -O -)"   
+`sh -c "$(curl -fsSL https://raw.githubusercontent.com/erlinux/TranslateProjectTools/master/select.sh)"`
+Or
+`sh -c "$(wget https://raw.githubusercontent.com/erlinux/TranslateProjectTools/master/select.sh -O -)"`   
