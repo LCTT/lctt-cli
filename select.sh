@@ -34,6 +34,8 @@ function translated(){
 cat /dev/null > /tmp/TranslateProject.txt
 find $tech -type f |grep -v README.md | grep  -v "$( cat /tmp/TranslateProject_tech.txt  | uniq  | cut -d "/" -f 3 )" >> /tmp/TranslateProject.txt
 find $talk -type f |grep -v README.md | grep  -v "$( cat /tmp/TranslateProject_talk.txt  | uniq  | cut -d "/" -f 3 )" >> /tmp/TranslateProject.txt
+$(command -v echo) $tech 有	$(cat /tmp/TranslateProject_tech.txt | wc -l)	个 “LCTTer” 与您共同努力
+$(command -v echo) $talk 有	$(cat /tmp/TranslateProject_talk.txt | wc -l)	个 “LCTTer” 与您共同努力
 }
 ##其他的小功能
 function first_display() {
@@ -50,8 +52,6 @@ enter_dir	# 确定用户在 “TranslateProject” 目录
 first_display	# 给用户展示 “Linux中国翻译规范” 文件
 maths_now	# 告知用户 “LCTT” 总共有多少文件（全部）
 find_translated	# 综合 "keyword" 至 /tmp/TranslateProject.txt 文件
+$(command -v echo) -e "\n"  && cat /tmp/TranslateProject.txt | less
+		# 告知用户 “LCTT” 剩余有多少文章（未被翻译）
 translated	# 告知用户 “LCTT” 剩余有多少文章（被翻译）	
-$(command -v echo) -e "\n" 
-cat /tmp/TranslateProject.txt | less
-$(command -v echo) -e "\e[1;42m $tech 有	$(cat /tmp/TranslateProject_tech.txt | wc -l)	个 “LCTTer” 与你共同努力 \e[0m"
-$(command -v echo) -e "\e[1;42m $talk 有	$(cat /tmp/TranslateProject_talk.txt | wc -l)	个 “LCTTer” 与你共同努力 \e[0m"
