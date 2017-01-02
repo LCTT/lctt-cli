@@ -6,7 +6,7 @@ Script to help "LCTT" TranslateProject
 
 # Installation
 
-**请放置 "translateproject" 目录下，否则程序报错**
+**不放置 "translateproject" 目录下，“翻译筛选”程序将无法正常工作。**
 
 #####`sh -c "$(curl -fsSL https://raw.githubusercontent.com/erlinux/TranslateProjectTools/master/select.sh)"`
 ####Or
