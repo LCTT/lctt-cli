@@ -13,9 +13,9 @@ fi
 function maths_now() {
 if [  -d "./sources/" ];then
 	tech=./sources/tech/			
-	$(command -v echo) $tech 目录共有$($(command -v find)  $tech  -type f | $( command -v grep) -v README.md |  $(command -v wc) -l)个文件
+	$(command -v echo) $tech 目录有$($(command -v find)  $tech  -type f | $( command -v grep) -v README.md |  $(command -v wc) -l)个文件
 	talk=./sources/talk/	
-	$(command -v echo) $talk 目录共有$($(command -v find)  $talk  -type f | $( command -v grep) -v README.md |  $(command -v wc) -l)个文件
+	$(command -v echo) $talk 目录有$($(command -v find)  $talk  -type f | $( command -v grep) -v README.md |  $(command -v wc) -l)个文件
 else
 	$(command -v echo) "Missing folders"	
 	command exit 1
@@ -51,7 +51,7 @@ first_display	# 给用户展示 “Linux中国翻译规范” 文件
 maths_now	# 告知用户 “LCTT” 总共有多少文件（全部）
 find_translated	# 综合 "keyword" 至 /tmp/TranslateProject.txt 文件
 translated	# 告知用户 “LCTT” 剩余有多少文章（被翻译）	
-$(command -v echo) $tech 被翻译$(cat /tmp/TranslateProject_tech.txt | wc -l)篇文章
-$(command -v echo) $talk 被翻译$(cat /tmp/TranslateProject_talk.txt | wc -l)篇文章
+$(command -v echo) $tech $(cat /tmp/TranslateProject_tech.txt | wc -l)篇文章被翻译
+$(command -v echo) $talk $(cat /tmp/TranslateProject_talk.txt | wc -l)篇文章被翻译
 $(command -v echo) -e "\n" 
 cat /tmp/TranslateProject.txt | less
