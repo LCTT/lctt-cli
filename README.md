@@ -1,4 +1,4 @@
-# select.sh
+# gn1.sh
 
 Script to help "LCTT" TranslateProject
 
