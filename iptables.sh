@@ -29,7 +29,7 @@ read Protocol_type_Other
 echo $Protocol_type_Other
 echo "iptables $Table $B_Chain  $Chain $Number $protocol $Protocol_type_Other"
 
-echo -n "Please enter the Allow_IP$(echo -e "\033[37;31;5m Need \"-s\" \033[39;49;0m"): "
+echo -n "Please enter the Allow_IP$(echo -e "\033[37;31;5m Need \"-s\" or \"-d\" \033[39;49;0m"): "
 read Allow_IP
 echo "iptables $Table $B_Chain  $Chain $Number $protocol $Protocol_type_Other $Allow_IP"
 
@@ -41,7 +41,11 @@ echo -n "Please enter the Destination_Port:$(echo -e "\033[37;31;5m Need \"--dpo
 read Destination_Port
 echo "iptables $Table $B_Chain  $Chain $Number $protocol $Protocol_type_Other $Allow_IP $Source_Port $Destination_Port"
 
-echo  "Please enter the Action"
+echo -e "\e[1;31mThe Others: \e[0m"
+read The_Others
+echo "iptables $Table $B_Chain  $Chain $Number $protocol $Protocol_type_Other $Allow_IP $Source_Port $Destination_Port $The_Others"
+
+echo -e "Please enter the Action: "
 read Action
 Action="-j $Action"
-echo "iptables $Table $B_Chain  $Chain $Number $protocol $Protocol_type_Other $Allow_IP $Source_Port $Destination_Port $Action"
+echo "iptables $Table $B_Chain  $Chain $Number $protocol $Protocol_type_Other $Allow_IP $Source_Port $Destination_Port $The_Others $Action"
