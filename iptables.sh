@@ -1,6 +1,7 @@
 #!/bin/bash
 echo -n "Please enter the Tables: "
 read Table
+Table="-t $Table"
 echo "iptables $Table"
 
 echo -n "Please enter the Chain: "
@@ -48,4 +49,4 @@ echo "iptables $Table $B_Chain  $Chain $Number $protocol $Protocol_type_Other $A
 echo -e "Please enter the Action: "
 read Action
 Action="-j $Action"
-echo "iptables $Table $B_Chain  $Chain $Number $protocol $Protocol_type_Other $Allow_IP $Source_Port $Destination_Port $The_Others $Action"
+echo "iptables $Table $B_Chain  $Chain $Number $protocol $Protocol_type_Other $Allow_IP $Source_Port $Destination_Port $The_Others $(echo -e "\e[1;31m $Action \e[0m")"
