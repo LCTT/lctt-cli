@@ -39,7 +39,11 @@ hash $soft >/dev/null 2>&1 || {
 done
 
 function enter_dir() {
-if [ ! -d "../TranslateProject" ] && [  -d "../GetNewOne" ];then
+wz_n=$(pwd | cut -d / -f 3)
+wz_o="TranslateProject"
+	if [[ $wz_n =~ $wz_o  ]]; then
+		echo ""
+	else
 		printf "${RED}"
 			echo -n  "Please Run In the \"TranslateProject\" directory" 
 			echo ''
@@ -48,21 +52,23 @@ if [ ! -d "../TranslateProject" ] && [  -d "../GetNewOne" ];then
 fi
 }
 function maths_now() {
-	if [ -d "./sources/tech/" ];then
-		tech=./sources/tech/			
+	if [[ -d "./sources/tech/" ]]; then
+		tech="./sources/tech/"			
 			echo -n $tech 目录共有$($(command -v find)  $tech  -type f | $( command -v grep) -v README.md |  $(command -v wc) -l)个文件
-		else
+	else
+		tech="./sources/tech/"			
 		printf "${RED}"
 			echo -n "Missing $tech folders"
 			echo ''
 		printf "${NORMAL}"
 		exit
 	fi
-	if [ -d "./sources/talk/" ];then
-		talk=./sources/talk/
+	if [[ -d "./sources/talk/" ]]; then
+		talk="./sources/talk/"
 			echo -n $talk 目录共有$($(command -v find)  $talk  -type f | $( command -v grep) -v README.md |  $(command -v wc) -l)个文件
 			echo ""
-		else
+	else
+		talk="./sources/talk/"
 		printf "${RED}"
 			echo -n "Missing $talk folders"
 			echo ''
