@@ -7,8 +7,8 @@ Script to help "LCTT" -->  **[TranslateProject](https://github.com/LCTT/Translat
 ## Platforms
 
 - RHEL/CentOS and derivatives
+- Windows for [Git SCM](https://git-for-windows.github.io/)
 - Plan to Ubuntu/Debian
-- Plan to Windows for [Git SCM](https://git-for-windows.github.io/)
 
 ## Recipes
 ### Installation
