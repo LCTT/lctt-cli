@@ -10,19 +10,18 @@ Script to help "LCTT" -->  **[TranslateProject](https://github.com/LCTT/Translat
 - Plan to Ubuntu/Debian
 - Plan to Windows for [Git SCM](https://git-for-windows.github.io/)
 
-#### 请放置 "translateproject" 目录下，否则脚本程序无法正常工作。
-
 ## Recipes
 ### Installation
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/LCTT/GetNewOne/master/gn1.sh)"
 ```
-####Curl Or Wget
+####Curl Or Wget （请在 "translateproject" 目录中使用，否则该脚本程序无法正常工作。）
 ```
 sh -c "$(wget https://raw.githubusercontent.com/LCTT/GetNewOne/master/gn1.sh -O -)"
 ```
 
 ## License & Authors
+
 **Author:** Linux.Cn Translation Team ([jiwenkangatech@foxmail.com](mailto:jiwenkangatech@foxmail.com))
 
 **Copyright:** 2016-2017,  Software, Inc.
