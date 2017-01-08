@@ -129,7 +129,7 @@ function first_display() {
 	read
 }
 function time_now() {
-date | awk '{print $4}' | sed -s 's/^/现在时间为: /'
+date | awk '{print $4}' | sed 's/^/Time: /'
 }
 
 ##这里是主代码区
