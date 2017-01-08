@@ -2,13 +2,13 @@
 
 Script to help "LCTT" -->  **[TranslateProject](https://github.com/LCTT/TranslateProject)**
 
+![GetNewOne Gif](https://raw.githubusercontent.com/LCTT/GetNewOne/master/data/GetNewOne.gif)
+
 ## Platforms
 
 - RHEL/CentOS and derivatives
 - Plan to Ubuntu/Debian
 - Plan to Windows for [Git SCM](https://git-for-windows.github.io/)
-
-![GetNewOne Gif](https://raw.githubusercontent.com/LCTT/GetNewOne/master/data/GetNewOne.gif)
 
 #### 请放置 "translateproject" 目录下，否则脚本程序无法正常工作。
 
