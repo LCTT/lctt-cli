@@ -104,8 +104,9 @@ find $talk -type f |grep -v README.md | grep  -v "$( cat /tmp/TranslateProject_t
 		TranslateProject_tech=$(cat /tmp/TranslateProject_tech.txt | wc -l)
 	fi
 
-	if [  $TranslateProject_talk "<" 10 ];then
-		echo $talk 有0$TranslateProject_talk个 “LCTTer” 向您致以敬意
+	if [  $TranslateProject_talk "<" 9 ];then
+#bug
+	echo $talk 有0$TranslateProject_talk个 “LCTTer” 向您致以敬意
 	else
 		echo $talk 有$TranslateProject_talk个 “LCTTer” 向您共同努力
 	fi
