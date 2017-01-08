@@ -39,7 +39,7 @@ hash $soft >/dev/null 2>&1 || {
 done
 
 function enter_dir() {
-wz_n=$(pwd | cut -d / -f 3)
+wz_n=$(pwd | cut -d / -f 3,4,5,6)
 wz_o="TranslateProject"
 	if [[ $wz_n =~ $wz_o  ]]; then
 		echo ""
