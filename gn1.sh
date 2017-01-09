@@ -124,12 +124,12 @@ function no_translate() {
 
 ##Other_functions
 function check_language() {
-	chk_Language=$(export | grep LANG)	#必须用LANG判断，采用LC_ALL会造成Opensuse用户无法使用
-	if [[ $chk_Language =~ "zh_CN.UTF-8" ]];then
+chk_Language="$(export | grep LANG)"	#必须用LANG判断，采用LC_ALL会造成Opensuse用户无法使用
+	if   [[ $chk_Language =~ "zh_CN.UTF-8" ]];then
 		Lanaguage=Chinese
 	elif [[ $chk_Language =~ "zh_TW.UTF-8" ]];then
 		Lanaguage=Chinese
-	elif [[ $chk_Lanaguag =~ "en_US.UTF-8" ]];then
+	elif [[ $chk_Language =~ "en_US.UTF-8" ]];then
 		Lanaguage=English
 		export LC_ALL="zh_CN.UTF-8"	#帮助更改为中文，后续看情况是否还原
 	elif [[ $chk_Lanaguag =~ "C" ]];then
