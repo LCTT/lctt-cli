@@ -4,7 +4,7 @@ read Table
 Table="$Table"
 echo "iptables $Table"
 
-echo -n "Please enter the Chain :"
+echo -n "Please enter the Chain: "
 read Chain
 echo "iptables $Table $(echo -e "\033[37;31;5mNext Query\033[39;49;0m") $Chain"
 
