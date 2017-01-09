@@ -24,9 +24,23 @@
 	if [ -f "/tmp/TranslateProject*" ];then
 		cat /dev/null > /tmp/TranslateProject*
 	fi
-	
+	chk_Language=$(export | grep LC_ALL)
+	if [[ $chk_Language =~ "zh_CN.UTF-8" ]];then
+		Lanaguage=Chinese
+	elif [[ $chk_Lanaguag =~ "en_US.UTF-8" ]];then
+		Lanaguage=English
+		export LC_ALL=zh_CN.UTF-8	#帮助更改为中文，后续看情况是否还原
+	elif [[ $chk_Lanaguag =~ "C" ]];then
+		Lanaguage=English
+		export LC_ALL=zh_CN.UTF-8	#帮助更改为中文，后续看情况是否还原
+	else
+		printf "${RED}"
+		echo "Error:unknow Lanaguage"
+		printf "${NORMAL}"
+	fi
 		set -u
-		env | grep \"PATH\"
+#		env | grep "PATH"	//判断PATH,如果为空则填写默认PATH,否则执行一遍
+		
 #
 #主调用区
 #
@@ -130,7 +144,7 @@ function first_display() {
 	read
 }
 function time_now() {
-date | awk '{print $4}' | sed 's/^/Time: /'
+date "+今星期%a: %y-%m-%d 当前时间: %T"
 }
 
 ##这里是主代码区
