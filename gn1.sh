@@ -94,7 +94,7 @@ function find_translated() {
 	$(command -v cat) /dev/null > /tmp/TranslateProject_talk.txt
 	$(command -v cat) /dev/null > /tmp/TranslateProject_tech.txt
 ##<core>
-	for i in translating fanyi 翻译中 申请翻译 transalted
+	for i in Translated translating fanyi 翻译中 申请翻译 
 		do
 			cd $talk && grep -RHi $i | grep -v -E "LCTT翻译规范.md",".git" | cut -d ":" -f 1 >> /tmp/TranslateProject_talk.txt && cd ../..
 			cd $tech && grep -RHi $i | grep -v -E "LCTT翻译规范.md",".git" | cut -d ":" -f 1 >> /tmp/TranslateProject_tech.txt && cd ../..
