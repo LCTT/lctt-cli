@@ -37,7 +37,7 @@
 	}
 	done
 
-function enter_dir() {
+function enter_dir () {
 	wz_n=$(pwd | cut -d / -f 3,4,5,6)
 	wz_o="TranslateProject"
 	if [[ $wz_n =~ $wz_o  ]]; then
@@ -82,8 +82,8 @@ function find_translated() {
 	##<core>
 	for i in Translated translating fanyi 翻译中 申请翻译 
 		do
-			cd $talk && grep -RHi $i | grep -v -E "LCTT翻译规范.md",".git" | cut -d ":" -f 1 >> /tmp/TranslateProject_talk.txt && cd ../..
-			cd $tech && grep -RHi $i | grep -v -E "LCTT翻译规范.md",".git" | cut -d ":" -f 1 >> /tmp/TranslateProject_tech.txt && cd ../..
+			cd $talk && grep -RHi $i *| grep -v -E "LCTT翻译规范.md",".git" | cut -d ":" -f 1 >> /tmp/TranslateProject_talk.txt && cd ../..
+			cd $tech && grep -RHi $i *| grep -v -E "LCTT翻译规范.md",".git" | cut -d ":" -f 1 >> /tmp/TranslateProject_tech.txt && cd ../..
 		done
 ###bug:如文章本身带上述关键字会给屏蔽，晚些可用正则表达解决。
 	##</core>
@@ -124,7 +124,7 @@ function no_translate() {
 
 ##Other_functions
 function check_language() {
-	chk_Language=$(export | grep LC_ALL)
+	chk_Language=$(export | grep LANG)	#必须用LANG判断，采用LC_ALL会造成Opensuse用户无法使用
 	if [[ $chk_Language =~ "zh_CN.UTF-8" ]];then
 		Lanaguage=Chinese
 	elif [[ $chk_Language =~ "zh_TW.UTF-8" ]];then
@@ -166,8 +166,7 @@ find_translated	# 综合 "KeyWord" 至 /tmp/TranslateProject.txt 文件
 translated	# 告知 “LCTTer” 剩余有多少文章（被翻译）	
 echo -e "\e[1;42m\n以下为筛选结果，请挑选进行翻译\e[0m" && read 
 no_translate	# 告知 “LCTTer” 剩余有多少文章（未翻译）
-
-
+exit 0		# 完成操作，正确 (状态码 0 ) 退出。
 
 ##Test_Code
 #
