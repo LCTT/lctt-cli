@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# exit on exceptions.
+set -e
+
+# save LCTT TranslateProject directory and cd to lctt-cli project root.
+export LCTT_DIR="$(pwd)"
+cd "$(dirname "$(readlink -f "$0")")"/..
+
+# FIXME: refactor with yml.
+usage() {
+  echo "LCTT Helper"
+  echo "Usage: $0 COMMAND [OPTION...]"
+  echo
+  echo "Commands:"
+  echo "  list      List LCTT articles"
+  echo "  claim     Claim an article"
+  echo "  submit    Submit an claimed article"
+  echo "  help      Print usage for commands"
+}
+
+# first argument COMMAND is mandatory, or print usage and exit otherwise.
+[ $# -lt 1 ] && {
+  usage
+  exit 1
+}
+
+# parse arguments.
+COMMAND="$1"
+COMMAND_SCRIPT="./lib/commands/${COMMAND}"
+
+# run command if exists, or print error and usage then exit otherwise.
+[ -x "$COMMAND_SCRIPT" ] && "$COMMAND_SCRIPT" ${@:2} || {
+  ./lib/error "Unknown command $COMMAND"
+  usage
+  exit 1
+}

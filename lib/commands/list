@@ -7,6 +7,19 @@ SHOW_SOURCES=1
 SHOW_TRANSLATED=
 SHOW_PUBLISHED=
 
+## USAGE START
+# Usage: [OPTION...]
+# Description: List LCTT articles
+# Arguments:
+#   Options:
+#     --[no-]sources: List source directory or not (default: yes)
+#     --[no-]translated: List translated directory or not (default: no)
+#     --[no-]published: List published directory or not (default: no)
+#     --all: For source directory listing, show all articles
+#            (includes translating and translated articles)
+#     --help: Print usage for this command
+## USAGE END
+
 usage() {
   echo "List LCTT articles"
   echo "Usage: $0 [OPTION...]"
@@ -17,7 +30,7 @@ usage() {
   echo "  --[no-]published   List published directory or not (default: no)"
   echo "  --all              For source directory listing, show all articles"
   echo "                     (includes translating and translated articles)"
-  echo "  --help             Print usage for this subcommand"
+  echo "  --help             Print usage for this command"
 }
 
 list() {
