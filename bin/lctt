@@ -11,6 +11,15 @@ cd "$(dirname "$(readlink -f "$0")")"/..
 
 # source library files.
 source ./lib/common/error.sh
+source ./lib/common/check_deps.sh
+
+# check dependencies.
+check_deps git curl || {
+  for DEP in $MISSING_DEPS; do
+    error "Command \`${DEP}\` is required but not found."
+  done
+  exit 1
+}
 
 # FIXME: refactor with yml.
 usage() {
