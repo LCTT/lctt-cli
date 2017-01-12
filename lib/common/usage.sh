@@ -136,3 +136,5 @@ print_usage() {
           }
         done || true
 }
+
+export -f print_usage

@@ -1,4 +1,4 @@
-# Utility to parse usage description.
+# Utility to print error message.
 
 set -e
 
@@ -13,3 +13,5 @@ export __INC__COMMON__ERROR=1
 error() {
   echo "[-] $@" > /dev/stderr
 }
+
+export -f error
