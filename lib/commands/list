@@ -7,6 +7,9 @@ SHOW_SOURCES=1
 SHOW_TRANSLATED=
 SHOW_PUBLISHED=
 
+# source library files.
+source ./lib/common/usage.sh
+
 ## USAGE START
 # Usage: [OPTION...]
 # Description: List LCTT articles
@@ -19,19 +22,6 @@ SHOW_PUBLISHED=
 #            (includes translating and translated articles)
 #     --help: Print usage for this command
 ## USAGE END
-
-usage() {
-  echo "List LCTT articles"
-  echo "Usage: $0 [OPTION...]"
-  echo
-  echo "Options:"
-  echo "  --[no-]sources     List source directory or not (default: yes)"
-  echo "  --[no-]translated  List translated directory or not (default: no)"
-  echo "  --[no-]published   List published directory or not (default: no)"
-  echo "  --all              For source directory listing, show all articles"
-  echo "                     (includes translating and translated articles)"
-  echo "  --help             Print usage for this command"
-}
 
 list() {
   TYPE="$1"
@@ -72,7 +62,7 @@ for ARG in $@; do
       STATUS_ALL=1
       ;;
     --help)
-      usage
+      print_usage "$0" "$APP_NAME $(basename $0)"
       exit 0
       ;;
     *)

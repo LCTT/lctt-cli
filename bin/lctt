@@ -3,9 +3,14 @@
 # exit on exceptions.
 set -e
 
+export APP_NAME='lctt'
+
 # save LCTT TranslateProject directory and cd to lctt-cli project root.
 export LCTT_DIR="$(pwd)"
 cd "$(dirname "$(readlink -f "$0")")"/..
+
+# source library files.
+source ./lib/common/error.sh
 
 # FIXME: refactor with yml.
 usage() {
@@ -31,7 +36,7 @@ COMMAND_SCRIPT="./lib/commands/${COMMAND}"
 
 # run command if exists, or print error and usage then exit otherwise.
 [ -x "$COMMAND_SCRIPT" ] && "$COMMAND_SCRIPT" ${@:2} || {
-  ./lib/error "Unknown command $COMMAND"
+  error "Unknown command $COMMAND."
   usage
   exit 1
 }
