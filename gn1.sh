@@ -167,6 +167,8 @@ translated	# 告知 “LCTTer” 剩余有多少文章（被翻译）
 echo -e "\e[1;42m\n以下为筛选结果，请挑选进行翻译\e[0m" && read 
 no_translate	# 告知 “LCTTer” 剩余有多少文章（未翻译）
 exit 0		# 完成操作，正确 (状态码 0 ) 退出。
+#sed -i "1i **translating by [erlinux](https://github.com/erlinux)**" "./sources/tech/20161225 Minecraft Server on Linux.md" ; cat "./sources/tech/20161225 Minecraft Server on Linux.md" | head -n 1
+
 
 ##Test_Code
 #
