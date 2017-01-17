@@ -1,3 +1,4 @@
+#!/bin/bash
 # Utility to parse usage description.
 
 set -e

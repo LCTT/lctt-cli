@@ -1,3 +1,4 @@
+#!/bin/bash
 # Utility to print error message.
 
 set -e

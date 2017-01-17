@@ -1,3 +1,4 @@
+#!/bin/bash
 # Utility to check dependencies.
 
 set -e
