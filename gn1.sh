@@ -113,7 +113,7 @@ function translated(){
 			echo $talk 有$TranslateProject_talk位 “LCTTer” 向您共同努力
 	fi
 	
-	if [  $TranslateProject_tech "<" 9 ];then
+	if [  $TranslateProject_tech "<" 10 ];then # look like bug
 			echo $tech 有0$TranslateProject_tech位 “LCTTer” 与您执以敬意
 	else
 			echo $tech 有$TranslateProject_tech位 “LCTTer” 与您共同努力
