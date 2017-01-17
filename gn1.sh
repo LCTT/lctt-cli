@@ -1,5 +1,6 @@
-#!/bin/bash 
-##Script for help to "LCTT"	author:jiwenkangatech@foxmail.com
+#!/bin/bash
+#  Script for help to "LCTT"
+## Author:jiwenkangatech@foxmail.com
 
 	if which tput >/dev/null 2>&1; then
 		ncolors=$(tput colors)
@@ -106,16 +107,16 @@ function translated(){
 		TranslateProject_tech=$(cat /tmp/TranslateProject_tech.txt | wc -l)
 	fi
 
-	if [  $TranslateProject_talk "<" 9 ];then			#One_bug
-			echo $talk 有0$TranslateProject_talk个 “LCTTer” 向您致以敬意
+	if [  $TranslateProject_talk "<" 9 ];then
+			echo $talk 有0$TranslateProject_talk位 “LCTTer” 向您致以敬意
 	else
-			echo $talk 有$TranslateProject_talk个 “LCTTer” 向您共同努力
+			echo $talk 有$TranslateProject_talk位 “LCTTer” 向您共同努力
 	fi
 	
-	if [  $TranslateProject_tech "<" 10 ];then
-			echo $tech 有0$TranslateProject_tech个 “LCTTer” 与您执以敬意
+	if [  $TranslateProject_tech "<" 9 ];then
+			echo $tech 有0$TranslateProject_tech位 “LCTTer” 与您执以敬意
 	else
-			echo $tech 有$TranslateProject_tech个 “LCTTer” 与您共同努力
+			echo $tech 有$TranslateProject_tech位 “LCTTer” 与您共同努力
 	fi
 }
 function no_translate() {
@@ -173,3 +174,6 @@ exit 0		# 完成操作，正确 (状态码 0 ) 退出。
 ##Test_Code
 #
 #cat /tmp/TranslateProject.txt | sed -s 's/^/cat\ "/;s/$/"\|\ \ head\ \-n\ 1/' > /tmp/test.sh && sh /tmp/test.sh
+# 第一位大数版本号，大功能发布时增加，vize增加；
+# 第二位小数版本号，增加小特性时增加，erlinux修加；
+# 第三位版本修复号，修复存在缺陷时用，erlinux修复。
