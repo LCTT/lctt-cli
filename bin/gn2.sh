@@ -21,17 +21,15 @@
 #  Github_User="$(cat ./TranslateProject/.git/config | sed -n '8p' | \
 #  cut -d / -f4 1>/dev/null)" #检测 .git/config 文件内容
 #  if [[ $Github_User = lctt ]] && [ -f ~/.ssh/id_rsa ] ;then
-  	read -p "请输入 Github 账户: " Iname
-	read -p "请输入 Github 邮箱: " Email
-	git clone https://github.com/$Iname/TranslateProject || { 
-		   git clone git@github.com:$Iname/TranslateProject
-		   }
+  	read -p "Github User: " Iname
+	read -p "Github Mail: " Email
+	git clone https://github.com/$Iname/TranslateProject 	
 	cd ./TranslateProject
      git config --global user.name  $Iname
      git config --global user.email $Email
 	cd ..
 #	while true && touch /tmp/lctt$(date +%m) 
-	echo -en "\e[1;32m lctt-cli was got ready "
+	echo -en "\e[1;32mlctt-cli was got ready "
 #    else
 #  	read -p "请输入 Github 账户: " Iname
 #	git clone git@github.com:$Iname/TranslateProject
@@ -55,4 +53,4 @@
 ##  fi
 
 # Welcome and Run
-	echo -e "\e[1;33m\n Welcome join the LCTT,thank you! $Iname \e[0m"
+	echo -e "\e[1;33m\nWelcome join the LCTT,thank you! $Iname \e[0m"
