@@ -19,6 +19,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/LCTT/GetNewOne/master/gn1.
 ```
 sh -c "$(wget https://raw.githubusercontent.com/LCTT/GetNewOne/master/gn1.sh -O -)"
 ```
+>第一位大数版本号，大功能发布时增加，vize增加；
+>第二位小数版本号，增加小特性时增加，erlinux修加；
+>第三位版本修复号，修复存在缺陷时用，erlinux修复。
 
 ## License & Authors
 
