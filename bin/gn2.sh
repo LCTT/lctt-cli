@@ -15,7 +15,7 @@
   done
 
 # Set Chinease Language
-  LCTT_Language=$(export | grep L)
+  LCTT_Language=$(echo $LANG)
   #! NOT SO STRONG
   if [[ ! $LCTT_Language =~ "zh_CN.UTF-8" ]];then
     export LANG="zh_CN.UTF-8" || export LC_ALL="zh_CN.UTF-8" 
@@ -49,12 +49,37 @@
   echo -e "\e[1;33m\nWelcome, "$Iname"! "$(date "+Time Now: %T")"\e[0m\n"
   #! Warm: Later add morning afternoon
 
-# Find KEYWORDS File.
-  {
-  KEYWORDS="*translated*|*translating*|*fanyi*|*·­ÒëÖÐ*|*ÉêÇë·­Òë*"
-  cd $PWD/../TranslateProject/sources/ 
-  grep -RHEvi ${KEYWORDS} * | grep -Ev ""$(find . -type d | sed 's#[^/]*/##' | awk -F '[/]' '{print $2}')"|LCTT·­Òë¹æ·¶.md|.git|README" |\
-  cut -d "/" -f2  | awk -F '.md:' '{print $1}' | sort -u | sed -s 's/$/.md/'
-#  cat "$(find . -name $rabbit)" | head -n1
-#  sed -s 's/^/"/;s/$/",/' | less 
-  }
+# Find File.
+# KEYWORDS="*translated|*translating|*fanyi|*·­ÒëÖÐ|*ÉêÇë·­Òë"
+# cd $PWD/../TranslateProject/sources/tech/
+# grep -RHEvi ${KEYWORDS} * | grep -Ev "LCTT·­Òë¹æ·¶.md|.git|README" | \
+# grep -RHEvi ${KEYWORDS} * | grep -Ev "$(find . -type d | sed 's#[^/]*/##' | \
+# awk -F '[/]' '{print $2}')|LCTT·­Òë¹æ·¶.md|.git|README" | \
+#  cut -d "/" -f2  | awk -F '.md:' '{print $1}' | sort -u | sed -s 's/$/.md/'
+# sed -s 's/^/"/;s/$/",/' | less 
+  if [[ -d "$PWD/../TranslateProject/sources/tech/" ]]; then
+    tech="$PWD/../TranslateProject/sources/tech/"
+    find  $tech  -type f | grep -v README.md |  wc -l
+  fi
+  if [[ -d "$PWD/../TranslateProject/sources/talk/" ]]; then
+    talk="$PWD/../TranslateProject/sources/talk/"
+    find  $talk  -type f | grep -v README.md |  wc -l
+  fi
+
+# Show File.
+  cat /dev/null > /tmp/TranslateProject_talk.txt
+  cat /dev/null > /tmp/TranslateProject_tech.txt
+  cat /dev/null > /tmp/TranslateProject.txt
+
+  for i in translated translating fanyi ·­ÒëÖÐ ÉêÇë·­Òë 
+  do
+  cd $talk && grep -RHi $i *| cut -d ":" -f 1 >> /tmp/TranslateProject_talk.txt 
+  cd $tech && grep -RHi $i *| cut -d ":" -f 1 >> /tmp/TranslateProject_tech.txt
+  done
+
+  find $tech -type f |grep -v README.md |\
+  grep -v "$(cat /tmp/TranslateProject_tech.txt |\
+  sort -u )" >> /tmp/TranslateProject.txt
+  find $talk -type f |grep -v README.md |\
+  grep -v "$(cat /tmp/TranslateProject_talk.txt |\
+  sort -u )" >> /tmp/TranslateProject.txt
