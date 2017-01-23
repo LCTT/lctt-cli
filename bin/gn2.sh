@@ -29,7 +29,7 @@
   read -p "Github User: " Iname
   read -p "Github Mail: " Email
   #! Warm: Test User INPUT
- # git clone https://$Iname@github.com/$Iname/TranslateProject 
+  git clone https://$Iname@github.com/$Iname/TranslateProject 
   #! Warm：Please add Key login later
   cd $PWD/TranslateProject
   git config --global user.name  "$Iname"
@@ -88,7 +88,31 @@
   grep -v "$(cat /tmp/TranslateProject_talk.txt |\
   sort -u )" >> /tmp/TranslateProject.txt
 
-  awk -F '[..]' '{print $3,$4,$5,$6}' /tmp/TranslateProject.txt | sed 's/[md$]//g'|\
-  sed 's#^\/TranslateProject\/sources##g' | sed 'sO^[\/]'OOg | sed 's/^/.\//'
+  awk -F '[..]' '{print $3,$4,$5,$6}' /tmp/TranslateProject.txt | sed 's/   //' |\
+  sed 's/md//g'| sed 's#^\/TranslateProject\/sources##g' | sed 'sO^[\/]'OOg |\
+  sed 's/^/.\//' > /tmp/TranslateProject2.txt
+  cat -n /tmp/TranslateProject2.txt | less 
 
-# Give The Number.
+# Find The Number.
+  read -p "Please enter the number: " SELECT
+  cd_Find_Number=$( cat /tmp/TranslateProject2.txt | sed -n "$SELECT p" | \
+  cut -d / -f 2 )
+  Find_Number=$(cat /tmp/TranslateProject2.txt | sed -n "$SELECT p" | xargs -0 |\
+  sed 's/   //' | sed 's/$/.md/' | sed -n '1p' | cut -d / -f 3 )
+  echo $Find_Number
+  #! Error：FIX ".MD"
+
+# Github -> Add file
+  exec[11]=$(find . -name "$Find_Number")
+  if [[ "$(expr length "${exec[11]}")" = 0 ]];then
+    echo -e "\033[37;31;5mFail to Find this file,Please retry...\033[39;49;0m" 
+  else 
+    cd $PWD/../$cd_Find_Number
+    $(sed -i "1i **translating by [$Iname](https://github.com/$Iname)**" \
+    "$(find . -name "$Find_Number" | sed  's#^\.\/##')")
+    git add "$(find . -name "$Find_Number" | sed  's#^\.\/##')"
+    git commit -am "Test"
+    git push origin master
+  fi
+echo -e "请前往\033[37;36;7mhttps://github.com/LCTT/TranslateProject/pull/new/\
+进行"New pull request"操作master\033[39;49;0m"
