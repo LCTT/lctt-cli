@@ -29,7 +29,7 @@
   read -p "Github User: " Iname
   read -p "Github Mail: " Email
   #! Warm: Test User INPUT
-  #git clone https://$Iname@github.com/$Iname/TranslateProject 
+ # git clone https://$Iname@github.com/$Iname/TranslateProject 
   #! Warm£ºPlease add Key login later
   cd $PWD/TranslateProject
   git config --global user.name  "$Iname"
@@ -59,17 +59,21 @@
 # sed -s 's/^/"/;s/$/",/' | less 
   if [[ -d "$PWD/../TranslateProject/sources/tech/" ]]; then
     tech="$PWD/../TranslateProject/sources/tech/"
-    find  $tech  -type f | grep -v README.md |  wc -l
+    tech_num=$(find  $tech  -type f | grep -v README.md |  wc -l)
+    echo "tech have $tech_num article."
   fi
   if [[ -d "$PWD/../TranslateProject/sources/talk/" ]]; then
     talk="$PWD/../TranslateProject/sources/talk/"
-    find  $talk  -type f | grep -v README.md |  wc -l
+    talk_num=$(find  $talk  -type f | grep -v README.md |  wc -l)
+    echo "talk have $talk_num article."
   fi
 
 # Show File.
   cat /dev/null > /tmp/TranslateProject_talk.txt
   cat /dev/null > /tmp/TranslateProject_tech.txt
   cat /dev/null > /tmp/TranslateProject.txt
+  echo -e "\n\e[1;42m Press any key to continue \e[0m"
+  read 
 
   for i in translated translating fanyi ·­ÒëÖÐ ÉêÇë·­Òë 
   do
@@ -83,3 +87,8 @@
   find $talk -type f |grep -v README.md |\
   grep -v "$(cat /tmp/TranslateProject_talk.txt |\
   sort -u )" >> /tmp/TranslateProject.txt
+
+  awk -F '[..]' '{print $3,$4,$5,$6}' /tmp/TranslateProject.txt | sed 's/[md$]//g'|\
+  sed 's#^\/TranslateProject\/sources##g' | sed 'sO^[\/]'OOg | sed 's/^/.\//'
+
+# Give The Number.
