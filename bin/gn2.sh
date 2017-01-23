@@ -30,7 +30,7 @@
   read -p "Github Mail: " Email
   #! Warm: Test User INPUT
   git clone https://$Iname@github.com/$Iname/TranslateProject 
-  #! Warm£ºPlease add Key login later
+  #! Warmï¼šPlease add Key login later
   cd $PWD/TranslateProject
   git config --global user.name  "$Iname"
   git config --global user.email "$Email"
@@ -43,18 +43,18 @@
   $(cat "$(find . -inum $(ls -i |grep LCTT | \
   awk '{print $1}'))" | head -n 1)\033[39;49;0m"
   cat "$(find . -inum $(ls -i |grep LCTT | awk '{print $1}'))" | grep -vi \#
-  #£¡Warm: Not has not do it...
+  #ï¼Warm: Not has not do it...
 
 # Show the thime and Say think you
   echo -e "\e[1;33m\nWelcome, "$Iname"! "$(date "+Time Now: %T")"\e[0m\n"
   #! Warm: Later add morning afternoon
 
 # Find File.
-# KEYWORDS="*translated|*translating|*fanyi|*·­ÒëÖĞ|*ÉêÇë·­Òë"
+# KEYWORDS="*translated|*translating|*fanyi|*ç¿»è¯‘ä¸­|*ç”³è¯·ç¿»è¯‘"
 # cd $PWD/../TranslateProject/sources/tech/
-# grep -RHEvi ${KEYWORDS} * | grep -Ev "LCTT·­Òë¹æ·¶.md|.git|README" | \
+# grep -RHEvi ${KEYWORDS} * | grep -Ev "LCTTç¿»è¯‘è§„èŒƒ.md|.git|README" | \
 # grep -RHEvi ${KEYWORDS} * | grep -Ev "$(find . -type d | sed 's#[^/]*/##' | \
-# awk -F '[/]' '{print $2}')|LCTT·­Òë¹æ·¶.md|.git|README" | \
+# awk -F '[/]' '{print $2}')|LCTTç¿»è¯‘è§„èŒƒ.md|.git|README" | \
 #  cut -d "/" -f2  | awk -F '.md:' '{print $1}' | sort -u | sed -s 's/$/.md/'
 # sed -s 's/^/"/;s/$/",/' | less 
   if [[ -d "$PWD/../TranslateProject/sources/tech/" ]]; then
@@ -75,7 +75,7 @@
   echo -e "\n\e[1;42m Press any key to continue \e[0m"
   read 
 
-  for i in translated translating fanyi ·­ÒëÖĞ ÉêÇë·­Òë 
+  for i in translated translating fanyi ç¿»è¯‘ä¸­ ç”³è¯·ç¿»è¯‘ 
   do
   cd $talk && grep -RHi $i *| cut -d ":" -f 1 >> /tmp/TranslateProject_talk.txt 
   cd $tech && grep -RHi $i *| cut -d ":" -f 1 >> /tmp/TranslateProject_tech.txt
@@ -100,7 +100,7 @@
   Find_Number=$(cat /tmp/TranslateProject2.txt | sed -n "$SELECT p" | xargs -0 |\
   sed 's/   //' | sed 's/$/.md/' | sed -n '1p' | cut -d / -f 3 )
   echo $Find_Number
-  #! Error£ºFIX ".MD"
+  #! Errorï¼šFIX ".MD"
 
 # Github -> Add file
   exec[11]=$(find . -name "$Find_Number")
@@ -114,5 +114,4 @@
     git commit -am "Test"
     git push origin master
   fi
-echo -e "ÇëÇ°Íù\033[37;36;7mhttps://github.com/LCTT/TranslateProject/pull/new/\
-½øĞĞ"New pull request"²Ù×÷master\033[39;49;0m"
+echo -e "è¯·å‰å¾€\033[37;36;7mhttps://github.com/LCTT/TranslateProject/pull/new/master\033[39;49;0mè¿›è¡Œ"New pull request"æ“ä½œ"
