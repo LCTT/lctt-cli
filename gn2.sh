@@ -28,7 +28,7 @@
   read -p "Github User: " Iname
   read -p "Github Mail: " Email
   #! Warm: Test User INPUT
-  git clone https://$Iname@github.com/$Iname/TranslateProject 
+ # git clone https://$Iname@github.com/$Iname/TranslateProject 
   #! Warm??Please add Key login later
   cd $PWD/TranslateProject
   git config --global user.name  "$Iname"
@@ -87,9 +87,11 @@
   grep -v "$(cat /tmp/TranslateProject_talk.txt |\
   sort -u )" >> /tmp/TranslateProject.txt
 
-  awk -F '[..]' '{print $3,$4,$5,$6}' /tmp/TranslateProject.txt | sed 's/   //' |\
+#  awk -F '[..]' '{print $3,$4,$5,$6}' /tmp/TranslateProject.txt | sed 's/    //' |\
+  awk -F '[..]' '{print $3,$4,$5,$6}' /tmp/TranslateProject.txt |\
   sed 's/md//g'| sed 's#^\/TranslateProject\/sources##g' | sed 'sO^[\/]'OOg |\
-  sed 's/^/.\//' > /tmp/TranslateProject2.txt
+  sed 's/^/.\//' |  tr -d $ | sed  's/[ \s ]*$//' |\
+  sed 's/$/.md/'  > /tmp/TranslateProject2.txt
   cat -n /tmp/TranslateProject2.txt | less 
 
 # Find The Number.
@@ -97,9 +99,8 @@
   cd_Find_Number=$( cat /tmp/TranslateProject2.txt | sed -n "$SELECT p" | \
   cut -d / -f 2 )
   Find_Number=$(cat /tmp/TranslateProject2.txt | sed -n "$SELECT p" | xargs -0 |\
-  sed 's/[\s$]*//' | sed 's/$/.md/' | sed -n '1p' | cut -d / -f 3 )
+  sed -n '1p' | cut -d / -f 3 )
   echo $Find_Number
-  #! Error??FIX ".MD"
 
 # Github -> Add file
   exec[11]=$(find . -name "$Find_Number")
