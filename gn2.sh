@@ -122,5 +122,7 @@
   read && clear
   echo -e "\e[1;33mThanks @"$Iname" https://linux.cn/\e[0m\n"
   }
-  
   fi
+
+# 此版本确实为v2.1.2，做了大改变。
+## 包括：修复正则表达，交互效果明显。

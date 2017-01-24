@@ -1,24 +1,23 @@
-# gn1.sh
+# gn2.sh
 
 Script to help "LCTT" -->  **[TranslateProject](https://github.com/LCTT/TranslateProject)**
 
-![GetNewOne Gif](https://raw.githubusercontent.com/LCTT/GetNewOne/master/others/images/GetNewOne.gif)
+![lctt-cli Gif](https://raw.githubusercontent.com/LCTT/lctt-cli/master/others/images/lctt-cli.gif)
 
 ## Platforms
 
 - RHEL/CentOS and derivatives
 - Windows for [Git SCM](https://git-for-windows.github.io/)
-- Plan to Ubuntu/Debian
 
 ## Recipes
 ### Installation
 
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/LCTT/GetNewOne/master/gn1.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/LCTT/lctt-cli/master/gn2.sh)"
 ```
-####Curl Or Wget （请在 "translateproject" 目录中使用，否则该脚本程序无法正常工作。）
+####Curl Or Wget
 ```
-sh -c "$(wget https://raw.githubusercontent.com/LCTT/GetNewOne/master/gn1.sh -O -)"
+sh -c "$(wget https://raw.githubusercontent.com/LCTT/lctt-cli/master/gn2.sh -O -)"
 ```
 
 ## License & Authors
