@@ -25,14 +25,14 @@
   fi 
 
 # Get Github User detail
-  read -p "Github User: " Iname
-  read -p "Github Mail: " Email
+  read -p "Github User: " Uname
+# read -p "Github Mail: " Email
   #! Warm: Test User INPUT
- # git clone https://$Iname@github.com/$Iname/TranslateProject 
+  git clone https://$Uname@github.com/$Uname/TranslateProject 
   #! Warm??Please add Key login later
   cd $PWD/TranslateProject
-  git config --global user.name  "$Iname"
-  git config --global user.email "$Email"
+# git config --global user.name  "$Uname"
+# git config --global user.email "$Email"
   echo -e "\e[1;32mlctt-cli was got ready\e[0m"
   echo -e "\n\e[1;42m Press any key to continue \e[0m"
   read && clear && echo -e '\n\n\n'
@@ -45,7 +45,7 @@
   #??Warm: Not has not do it...
 
 # Show the thime and Say think you
-  echo -e "\e[1;33m\nWelcome, "$Iname"! "$(date "+Time Now: %T")"\e[0m\n"
+  echo -e "\e[1;33m\nWelcome, "$Uname"! "$(date "+Time Now: %T")"\e[0m\n"
   #! Warm: Later add morning afternoon
 
 # Find File.
@@ -108,19 +108,19 @@
     echo -e "\033[37;31;5mFail to Find this file,Please retry...\033[39;49;0m" 
   else 
     cd $PWD/../$cd_Find_Number
-    $(sed -i "1i **translating by [$Iname](https://github.com/$Iname)**" \
+    $(sed -i "1i **translating by [$Uname](https://github.com/$Uname)**" \
 	"$(find . -name "$Find_Number" | sed  's#^\.\/##')")
     git add "$(find . -name "$Find_Number" | sed  's#^\.\/##')"
-    git commit -am "By "$Iname" translating"
+    git commit -am "By "$Uname" translating"
     git push origin master
 
   test $? -eq 0 && {
   echo -e "\e[1;33m   Done.\e[0m"
   echo -e "\e[1;33mPlease Pull New Requert Next\e[0m"
-  echo -e "\033[37;36;4mhttps://github.com/$Iname/TranslateProject/pull/new/master\
+  echo -e "\033[37;36;4mhttps://github.com/$Uname/TranslateProject/pull/new/master\
 \033[39;49;0m\n"
   read && clear
-  echo -e "\e[1;33mThanks @"$Iname" https://linux.cn/\e[0m\n"
+  echo -e "\e[1;33mThanks @"$Uname" https://linux.cn/\e[0m\n"
   }
   fi
 
