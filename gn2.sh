@@ -59,7 +59,7 @@
   echo -e "\n\e[1;42m Press any key to continue \e[0m"
   read 
 
-  for i in translated translating fanyi 翻译
+  for i in translated translating fanyi 翻译中 申请翻译
   do
   cd $talk && grep -RHi $i *| cut -d ":" -f 1 > /tmp/TranslateProject_talk.txt 
   cd $tech && grep -RHi $i *| cut -d ":" -f 1 > /tmp/TranslateProject_tech.txt
