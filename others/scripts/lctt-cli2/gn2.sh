@@ -13,11 +13,11 @@ set -e
 usage(){
   echo "Usage: $0 COMMAND [OPTION...]           "
   echo "                                        "
-  echo "Commands:                               "
-  echo "  --list      Display LCTT acticles       " 
-  echo "  --commit    Commit sendto Github        "
+  echo "Options:                                "
+  echo "  --list      List LCTT Acticles       " 
+  echo "  --commit    Commit Sendto Github        "
   echo "  --check     Check for Errors            "
-  echo "  --help      Show help messages          "
+  echo "  --help      Show help Messages          "
   echo "For example:                            "
   echo "  $0 --check                              "
 }
@@ -25,13 +25,13 @@ usage(){
 if [ ! "$#" -lt 1  ];then
   case $1 in
     --list)
-      echo list
+      bash ./options/list/list.sh
       ;;
     --commit)
-      echo commit
+      bash ./options/commit/commit.sh
       ;;
     --check)
-      echo check
+      bash ./options/check/check.sh
       ;;
     --help)
       usage      
