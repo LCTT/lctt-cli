@@ -1,7 +1,6 @@
 #!/bin/bash
 # Find The Number.
 
-USER=$(git config --list | awk -F "name=" '{print $2}' | xargs)                        
 
    read -p "Please enter the number: " SELECT
    NUMBER=$( cat /tmp/aa.txt | sed -n "$SELECT p" | xargs -0 )
@@ -13,9 +12,11 @@ USER=$(git config --list | awk -F "name=" '{print $2}' | xargs)
   if [ "$(expr length "${exec[11]}")" -eq 0 ];then
     echo  "Fail to Find this file,Please retry..." 
   else 
-    sed -i "1i **translating by [$NAME](https://github.com/$NAME)**" "$NUMBER_PATH"
+    cd $(dirname "$NUMBER_PATH")
+    USER=$(git config --list | awk -F "name=" '{print $2}' | xargs)                        
+    sed -i "1i **translating by [$USER](https://github.com/$USER)**" "$NUMBER_PATH"
     git add "$NUMBER_PATH"
-    git commit -am "Translating By "$NAME" "
+    git commit -am "Translating By "$USER" "
     git push origin master
   fi
 
