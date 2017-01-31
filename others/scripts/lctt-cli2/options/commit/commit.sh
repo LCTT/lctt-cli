@@ -13,7 +13,7 @@ USER=$(git config --list | awk -F "name=" '{print $2}' | xargs)
   if [ "$(expr length "${exec[11]}")" -eq 0 ];then
     echo  "Fail to Find this file,Please retry..." 
   else 
-    $(sed -i "1i **translating by [$NAME](https://github.com/$NAME)**" $NUMBER_PATH)
+    sed -i "1i **translating by [$NAME](https://github.com/$NAME)**" "$NUMBER_PATH"
     git add "$NUMBER_PATH"
     git commit -am "Translating By "$NAME" "
     git push origin master
