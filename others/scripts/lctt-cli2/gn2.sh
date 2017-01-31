@@ -26,7 +26,7 @@ set -e
 
 # Head and thanks
 USER=$(git config --list | awk -F "name=" '{print $2}' | xargs)
-printf "Hi~ $USER ${BOLD}$(date "+Time Now: %T")${NORMAL}\n"
+printf "Hi! $USER ${BOLD}$(date "+Time Now: %T")${NORMAL}\n"
 
 # GetNewOne Usage
 usage(){
@@ -44,13 +44,13 @@ usage(){
 if [ ! "$#" -lt 1  ];then
   case $1 in
     --list)
-      bash ./options/list/list.sh
+      source "$PWD/options/list/list.sh"
       ;;
     --commit)
-      bash ./options/commit/commit.sh
+      source "$PWD/options/commit/commit.sh"
       ;;
     --check)
-      bash ./options/check/check.sh
+      source "$PWD/options/check/check.sh"
       ;;
     --help)
       usage      
