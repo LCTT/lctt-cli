@@ -44,13 +44,13 @@ usage(){
 if [ ! "$#" -lt 1  ];then
   case $1 in
     --list)
-      source $(dirname $(readlink -f $0))/options/list/list.sh
+      bash $(dirname $(readlink -f $0))/options/list/list.sh
       ;;
     --commit)
-      source $(dirname $(readlink -f $0))/options/commit/commit.sh
+      bash $(dirname $(readlink -f $0))/options/commit/commit.sh
       ;;
     --check)
-      source $(dirname $(readlink -f $0))/options/check/check.sh
+      bash $(dirname $(readlink -f $0))/options/check/check.sh
       ;;
     --help)
       usage      
