@@ -13,8 +13,11 @@ Script to help "LCTT" -->  **[TranslateProject](https://github.com/LCTT/Translat
 ### Installation
 
 ```
-git clone https://github.com/lctt/lctt-cli /usr/local/lctt-cli ; ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2
-gn2 --help
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/LCTT/lctt-cli/master/gn2.sh)"
+```
+####Curl Or Wget
+```
+sh -c "$(wget https://raw.githubusercontent.com/LCTT/lctt-cli/master/gn2.sh -O -)"
 ```
 
 ## License & Authors
