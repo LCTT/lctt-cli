@@ -38,7 +38,10 @@ usage(){
   echo "  --check     Check for Errors            "
   echo "  --help      Show help Messages          "
   echo "For example:                            "
-  echo "  $0 --check                              "
+  echo "  $0 --help                               "
+  echo "                                        "
+  echo "Online help: <https://github.com/lctt/lctt-cli>"
+  echo "                                        "
 }
 
 if [ ! "$#" -lt 1  ];then
