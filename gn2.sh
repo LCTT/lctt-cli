@@ -30,9 +30,10 @@ printf "Hi! $USER ${BOLD}$(date "+Time Now: %T")${NORMAL}\n"
 
 # GetNewOne Usage
 usage(){
-  echo "Usage: $0 COMMAND [OPTION...]           "
+#  echo "Usage: $0 COMMAND [OPTION...]           "
+  echo "Usage: $0 [PARAMETER...]                 "
   echo "                                        "
-  echo "Options:                                "
+  echo "Parameters:                               "
   echo "  --list      List LCTT Acticles       " 
   echo "  --commit    Commit Sendto Github        "
   echo "  --check     Check for Errors            "
