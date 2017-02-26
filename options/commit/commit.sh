@@ -4,11 +4,11 @@
 
    read -p "Please enter the number: " SELECT
    NUMBER=$( cat /tmp/aa.txt | sed -n "$SELECT p" | xargs -0 )
-   NUMBER_PATH=$(find / -name "$NUMBER")
+   NUMBER_PATH=$(find / -name "$NUMBER" 2>/dev/null )
    echo $NUMBER
 
 # Github -> Add file
-    exec[11]=$(find / -name "$NUMBER")
+    exec[11]=$(find / -name "$NUMBER" 2>/dev/null)
   if [ "$(expr length "${exec[11]}")" -eq 0 ];then
     echo  "Fail to Find this file,Please retry..." 
   else 
