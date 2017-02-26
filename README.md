@@ -15,7 +15,6 @@ Script to help "LCTT" -->  **[TranslateProject](https://github.com/LCTT/Translat
 
 ```
 git clone https://github.com/lctt/lctt-cli /usr/local/lctt-cli ; ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2
-gn2 --help
 ```
 
 ## License & Authors
