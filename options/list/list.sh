@@ -24,7 +24,7 @@
   set -e
   
   # 找到文件夹并进入
-  export LCTT=$(find / -iname TranslateProject |\
+  export LCTT=$(find / -iname TranslateProject 2>/dev/null |\
   awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
   #export LCTT2=$( dirname $( readlink -f $LCTT) )
   cd $LCTT/sources/
@@ -44,6 +44,6 @@
 # 开始查找
   ``grep -RHEi "translated|translating|fanyi|翻译中|申请翻译" | \
   awk -F ":" '{print $1}' | awk -F "/" '{print $2}'`` > /tmp/aaa.txt
-  ``find -type f | sed -e "s#^[ . ]/##" | awk -F '/' '{print $2}' | grep -v yearbook2015 | \
+  ``find -type f 2>/dev/null | sed -e "s#^[ . ]/##" | awk -F '/' '{print $2}' | grep -v yearbook2015 | \
   grep -v README.md``| grep -v "$( cat  /tmp/aaa.txt)"`` > /tmp/aa.txt
   sed '/^$/d' /tmp/aa.txt | cat -n
