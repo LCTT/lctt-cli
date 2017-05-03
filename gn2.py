@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-# @function 解决LinuxCN择题困难
-
+# @function: solve lctt select contect
 import os,platform
 lctt_of_python_need_download=('requests','wxPython','GitPython')
 
@@ -49,3 +48,4 @@ def main():
         git.Repo.clone_from(url="https://erlinux@github.com/lctt/TranslateProject", to_path="TranslateProject")
     # git_clone()
 main()
+
