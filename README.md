@@ -2,8 +2,6 @@
 
 Script to help "LCTT" -->  **[TranslateProject](https://github.com/LCTT/TranslateProject)**
 
-![GetNewOne Gif](https://raw.githubusercontent.com/LCTT/GetNewOne/master/images/GetNewOne.gif)
-
 ## Platforms
 
 - RHEL/CentOS and derivatives
