@@ -41,6 +41,7 @@ def git_github_clone():
 def main():
     if platform.system()!=str("Windows"):
         os.system("git clone https://github.com/lctt/lctt-cli /usr/local/lctt-cli ; ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2")
+        sys.exit(0)
 
     # print "第%d个参数是：%s" % (sys.argv[i])
     try:
