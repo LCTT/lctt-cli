@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 # @function: solve lctt select contect
-import os,platform
+import sys,os
+import platform
+from list.find_translated import list_and_find
+
 lctt_of_python_need_download=('requests','wxPython','GitPython')
 
 def package_pip_check():
@@ -26,26 +29,37 @@ def git_command_check():
             code.write(response.content)
         print("Downloading Finished.Please Set PATH and Make Progrme Find \"git\"!")
         os.system("PortableGit-2.12.2.2-32-bit.7z.exe")
+    else:
+        print('It\'s ok! Congratulation')
+
+def git_github_clone():
+    import git
+    if not os.path.isdir("TranslateProject"):
+        os.makedirs("TranslateProject")
+    git.Repo.clone_from(url="https://github.com/lctt/TranslateProject", to_path="TranslateProject")
 
 def main():
-    # Not Windows Platform still to use gn2.sh
-    def windows_platform_check():
-        if platform.system()!=str("Windows"):
-            os.system("git clone https://github.com/lctt/lctt-cli /usr/local/lctt-cli ; \
-            ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2")
-        else:
-            # Check package alive
+    if platform.system()!=str("Windows"):
+        os.system("git clone https://github.com/lctt/lctt-cli /usr/local/lctt-cli ; ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2")
+
+    # print "第%d个参数是：%s" % (sys.argv[i])
+    try:
+        argv_command = sys.argv[1]
+        if argv_command ==  '--check-pip':
             package_pip_check()
+        elif argv_command == '--check-git':
             git_command_check()
-            # Check git.exe Found
-    windows_platform_check()
+        elif argv_command == '--clone':
+            git_github_clone()
+        elif argv_command == '--list':
+            list_and_find()
+    except IndexError:
+        print('''
+         [*] --check-pip
+         [*] --check-git
+         [*] --clone
+         [*] --list
+        ''')
 
-    def git_clone():  # 将 git clone 内容放置于 TranslateProject Folder
-        import git
-        if not os.path.isdir("TranslateProject"):
-            os.makedirs("TranslateProject")
-        print("Folder alive.Now Downloading From Github...")
-        git.Repo.clone_from(url="https://erlinux@github.com/lctt/TranslateProject", to_path="TranslateProject")
-    # git_clone()
-main()
-
+if __name__ == '__main__':
+    main()
