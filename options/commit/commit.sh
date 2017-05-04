@@ -1,7 +1,6 @@
 #!/bin/bash
 # Find The Number.
 
-
    read -p "Please enter the number: " SELECT
    NUMBER=$( cat /tmp/aa.txt | sed -n "$SELECT p" | xargs -0 )
    NUMBER_PATH=$(find / -name "$NUMBER" 2>/dev/null )
