@@ -9,7 +9,7 @@ set -e
 USER=$(git config --list | awk -F "name=" '{print $2}' | xargs)
 printf "Hi! $USER ${BOLD}$(date "+Time Now: %T")${NORMAL}\n"
 
-# GetNewOne Usage
+# GetNewTwo Usage
 usage(){
   echo "Online help: <https://github.com/lctt/lctt-cli>"
   echo "                                        "
