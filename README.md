@@ -2,7 +2,7 @@
 
 Script to help "LCTT" -->  **[TranslateProject](https://github.com/LCTT/TranslateProject)**
 
-![lctt-cli Gif](https://raw.githubusercontent.com/LCTT/lctt-cli/master/others/images/lctt-cli.gif)
+![lctt-cli Gif](https://raw.githubusercontent.com/LCTT/lctt-cli/shell-cli/others/images/lctt-cli.gif)
 
 ## Platforms
 
@@ -14,7 +14,7 @@ Script to help "LCTT" -->  **[TranslateProject](https://github.com/LCTT/Translat
 ### Installation
 
 ```
-git clone https://github.com/lctt/lctt-cli /usr/local/lctt-cli ; ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2
+git clone https://github.com/LCTT/lctt-cli/tree/shell-cli /usr/local/lctt-cli ; ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2
 ```
 
 ## License & Authors
