@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
 import sys,os
 
 lctt_of_python_need_download=('requests','wxPython','GitPython')

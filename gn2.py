@@ -8,6 +8,7 @@ def main():
     # 先测试 Windows 是否可以完整工作， Linux 用户继续使用分支。beta 版本将包括跨平台测试。
     if platform.system()!=str("Windows"):
         os.system("git clone https://github.com/lctt/lctt-cli /usr/local/lctt-cli ; ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2")
+        exit(0)
 #   # 为 Windows 用户提供参数选择
     try:
         argv_command = sys.argv[1]
