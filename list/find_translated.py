@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-# @function: list_function of gn2.sh
 import os,re
 
 def list_and_find():

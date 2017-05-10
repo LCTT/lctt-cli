@@ -1,67 +1,51 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-# @function: solve lctt select contect
-import sys,os
-import platform
+import sys,platform
+from check.check_fix_error import *
 from list.find_translated import list_and_find
 
-lctt_of_python_need_download=('requests','wxPython','GitPython')
-
-def package_pip_check():
-    for import_pip in lctt_of_python_need_download:
-        try:
-            exec(str('import')+' '+ import_pip)
-        except ModuleNotFoundError:
-            os.system('pip install'+' '+import_pip)
-
-def git_command_check():
-    import requests
-    set_length=0
-    set_command='git'
-    for null in os.popen(set_command).readlines():
-        set_length+=1
-    # ls_git:
-    if set_length<8:
-        print("Now Downloading...")
-        git_url='https://github.com/git-for-windows/git/releases/download/v2.12.2.windows.2/PortableGit-2.12.2.2-32-bit.7z.exe'
-        response=requests.get(git_url)
-        with open("PortableGit-7z.exe","wb") as code:
-            code.write(response.content)
-        print("Downloading Finished.Please Set PATH and Make Progrme Find \"git\"!")
-        os.system("PortableGit-2.12.2.2-32-bit.7z.exe")
-    else:
-        print('It\'s ok! Congratulation')
-
-def git_github_clone():
-    import git
-    if not os.path.isdir("TranslateProject"):
-        os.makedirs("TranslateProject")
-    git.Repo.clone_from(url="https://github.com/lctt/TranslateProject", to_path="TranslateProject")
-
 def main():
+    # 先测试 Windows 是否可以完整工作， Linux 用户继续使用分支。beta 版本将包括跨平台测试。
     if platform.system()!=str("Windows"):
-        os.system("git clone https://github.com/LCTT/lctt-cli/ -b shell-cli /usr/local/lctt-cli ; ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2
-")
-        sys.exit(0)
-
-    # print "第%d个参数是：%s" % (sys.argv[i])
+        os.system("git clone https://github.com/lctt/lctt-cli /usr/local/lctt-cli ; ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2")
+#   # 为 Windows 用户提供参数选择
     try:
         argv_command = sys.argv[1]
-        if argv_command ==  '--check-pip':
+        if argv_command == 'list':
+            list_and_find()
+        elif argv_command == 'commit':
+            pass
+        elif argv_command == 'check':
+            if check() == True:
+                print('\n'+'All was ok~'+' '+'Congratulation!')
+        # Python-cli 新功能新特性
+        elif argv_command ==  '--check-pip':
             package_pip_check()
         elif argv_command == '--check-git':
             git_command_check()
-        elif argv_command == '--clone':
+        elif argv_command == 'clone':
             git_github_clone()
-        elif argv_command == '--list':
-            list_and_find()
+        # 不在预期输入内容
+        else:
+            raise IndexError
+        # 返回如下帮助菜单
     except IndexError:
         print('''
-         [*] --check-pip
-         [*] --check-git
-         [*] --clone
-         [*] --list
-        ''')
+usage: gn2.py [--check-pip] [--check-git] [--help]
+
+These are common gn2 commands used in various situations:
+
+check environment.
+   check            check environment is complete
+
+clone translateproject.
+   clone            clone lctt-cli from github
+
+list articles.
+   list             list translated not yet
+
+in fact `git --check-pip` can automatically fix some errors
+such as python package management.''')
 
 if __name__ == '__main__':
-    main()
+   main()
