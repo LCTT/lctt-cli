@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-import sys,platform
+import platform
 from check.check_fix_error import *
 from list.find_translated import list_and_find
 

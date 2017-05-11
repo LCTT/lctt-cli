@@ -2,18 +2,17 @@
 # -*- coding:utf-8 -*-
 import os,re
 
-# def __init__(self,list_num):
-#     list_num=self.list_num=0
+if not os.path.isdir("../tmp"):
+    os.makedirs("../tmp")
 
-def create_and_putfiles(write1=None,write2=None):
-    if not os.path.isdir("tmp"):
-        os.makedirs("tmp")
-    with open('tmp/translate_choose.txt','wb') as fd1:
-        fd1.write(write1.encode('utf-8'))
+def create_and_putfiles1(write1=None):
+    with open('../tmp/translate_choose.txt','wb') as fd1:
+        fd1.write(str(write1).encode('utf-8'))
         fd1.close()
-    with open('tmp/translate_choose.txt','ab') as fd2:
-        fd2.write(write2.encode('utf-8'))
-        fd1.close()
+def create_and_putfiles2(write2=None):
+    with open('../tmp/translate_choose.txt','ab') as fd2:
+        fd2.write(str(write2).encode('utf-8'))
+        fd2.close()
 
 def list_and_find():
     list_num=0
@@ -36,14 +35,12 @@ def list_and_find():
                         if list_num <=9:
                             write1='0'+str(list_num)+' '+filename
                             for write1 in list(write1.split(',')):
-                                create_and_putfiles(write1=write1+'\n')
+                                create_and_putfiles1(write1=write1)
                         if list_num  >9:
                             write2=str(list_num)+' '+filename
                             for write2 in list(write2.split(',')):
-                                create_and_putfiles(write2=write2+'\n')
+                                create_and_putfiles2(write2='\n'+write2)
                     files.close()
-
-# list_and_find()
-# AttributeError: 'NoneType' object has no attribute 'encode'
+list_and_find()
 
 # def save_and_rewrite():
