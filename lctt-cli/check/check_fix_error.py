@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-import sys,os
-
-lctt_of_python_need_download=('requests','wxPython','GitPython')
-
-def __init__(self,keyword):
-    self.keyword = '111111'
 
 def package_pip_check():
+    import os
+    lctt_of_python_need_download=['wget']
     for import_pip in lctt_of_python_need_download:
         try:
             exec('import '+ import_pip)
         except ModuleNotFoundError:
             os.system('pip install '+import_pip)
+    print('OK!'+'\n')
     return True
+package_pip_check()
 
+###############################################################
+
+# 方法已经更改，不在需要如下
 def git_command_check():
     import requests
     set_length=0
@@ -39,9 +40,3 @@ def check():
     if git_command_check() == True:
         print('Git Command ............  was ok')
     return True
-
-def git_github_clone():
-   import git
-   if not os.path.isdir("TranslateProject"):
-       os.makedirs("TranslateProject")
-       git.Repo.clone_from(url="https://github.com/lctt/TranslateProject", to_path="TranslateProject")

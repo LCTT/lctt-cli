@@ -2,6 +2,8 @@ from setuptools import setup
 from setuptools.command.test import test
 import os
 
+__version__='0.0.1'
+
 here = os.path.abspath(os.path.dirname(__file__))
 class PyTest(test):
     def finalize_options(self):
@@ -11,7 +13,7 @@ class PyTest(test):
 
 setup(
     name='lctt-cli',
-    version='0.1.0',
+    version=__version__,
     url='http://github.com/lctt/lctt-cli',
     license='MIT License',
     author='wenkangji',
