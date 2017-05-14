@@ -3,13 +3,13 @@
 import os,re
 
 def del_translated_file():
-    if not os.path.isdir("./tmp"):
-        os.makedirs("./tmp")
-    elif os.path.exists('./tmp/translate_choose.txt'):
-        os.remove('./tmp/translate_choose.txt')
-
+    if not os.path.isdir(os.path.dirname(__file__)+'/../test/tmp'):
+        os.makedirs(os.path.dirname(__file__)+'/../test/tmp')
+    elif os.path.exists(os.path.dirname(__file__)+'/../test/tmp/translate_choose.txt'):
+        os.remove(os.path.dirname(__file__)+'/../test/tmp/translate_choose.txt')
+		
 def create_and_putfiles(write=None):
-    with open('./tmp/translate_choose.txt','ab') as fd:
+    with open(os.path.dirname(__file__)+'/../test/tmp/translate_choose.txt','ab') as fd:
         fd.write(str(write).encode('utf-8'))
         fd.close()
 
@@ -36,3 +36,4 @@ def list_and_find():
                             create_and_putfiles(write+'\n')
                             print(write)
                         files.close()
+				
