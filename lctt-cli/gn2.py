@@ -21,7 +21,7 @@ def main():
             ''')
         elif argv_command == '--list' or argv_command == '-ls':
             list_and_find()
-            del_translated_file()
+        #   del_translated_file()
         elif argv_command == '--commit' or argv_command =='-cm':
             pass
         elif argv_command == '--check' or argv_command =='-ck':
