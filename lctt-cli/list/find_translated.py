@@ -7,7 +7,6 @@ def del_translated_file():
         os.makedirs("./tmp")
     elif os.path.exists('./tmp/translate_choose.txt'):
         os.remove('./tmp/translate_choose.txt')
-del_translated_file()
 
 def create_and_putfiles(write=None):
     with open('./tmp/translate_choose.txt','ab') as fd:
@@ -37,4 +36,3 @@ def list_and_find():
                             create_and_putfiles(write+'\n')
                             print(write)
                         files.close()
-list_and_find()

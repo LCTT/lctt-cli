@@ -11,10 +11,10 @@ def package_pip_check():
             os.system('pip install '+import_pip)
     print('OK!'+'\n')
     return True
-package_pip_check()
+
+
 
 ###############################################################
-
 # 方法已经更改，不在需要如下
 def git_command_check():
     import requests
