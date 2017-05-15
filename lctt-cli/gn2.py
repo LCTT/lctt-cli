@@ -21,9 +21,8 @@ def main():
             ''')
         elif argv_command == '--list' or argv_command == '-ls':
             list_and_find()
-        #   del_translated_file()
         elif argv_command == '--commit' or argv_command =='-cm':
-            pass
+            create_and_del().del_translated_file()
         elif argv_command == '--check' or argv_command =='-ck':
             package_pip_check()
         #   input_check()
