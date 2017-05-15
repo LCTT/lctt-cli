@@ -2,16 +2,22 @@
 # -*- coding:utf-8 -*-
 import os,re
 
-def del_translated_file():
-    if not os.path.isdir(os.path.dirname(__file__)+'/../test/tmp'):
-        os.makedirs(os.path.dirname(__file__)+'/../test/tmp')
-    elif os.path.exists(os.path.dirname(__file__)+'/../test/tmp/translate_choose.txt'):
-        os.remove(os.path.dirname(__file__)+'/../test/tmp/translate_choose.txt')
-		
-def create_and_putfiles(write=None):
-    with open(os.path.dirname(__file__)+'/../test/tmp/translate_choose.txt','ab') as fd:
-        fd.write(str(write).encode('utf-8'))
-        fd.close()
+class create_and_del:
+
+    def __init__(self,dir=None,file=None):
+        self.dir=os.path.dirname(__file__)+'/../test/tmp'
+        self.file=os.path.dirname(__file__)+'/../test/tmp/translate_choose.txt'
+
+    def create_and_putfiles(self,write=None):
+        with open(self.file,'ab') as fd:
+            fd.write(str(write).encode('utf-8'))
+            fd.close()
+
+    def del_translated_file(self):
+        if not os.path.isdir(self.dir):
+            os.makedirs(self.dir)
+        elif os.path.exists(self.file):
+            os.remove(self.file)
 
 def list_and_find():
     list_num=0
@@ -33,7 +39,6 @@ def list_and_find():
                     if translated == []:
                         write=str(list_num)+' '+filename
                         for write in list(write.split(',')):
-                            create_and_putfiles(write+'\n')
+                            create_and_del().create_and_putfiles(write+'\n')
                             print(write)
                         files.close()
-				

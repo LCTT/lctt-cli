@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-import wget,os,git
+import wget,os,git,re
 
 class download_translate_project():
     # 定义初始变量
@@ -37,16 +37,24 @@ class download_translate_project():
         finally:
             del_and_remove_downloaing()
 
+def read_translate():
+    file=os.path.dirname(__file__)+'/../test/tmp/translate_choose.txt'
+    with open(file=file,mode='r',encoding='utf-8') as fd:
+        for fds in fd.readlines():
+            fileid=fds.split(' ')[0]                # ID
+            filename=' '.join(fds.split(' ')[1:])   # NM
+            print(filename)
 
-
-##################################################
-
-def input_check():
-    import re
-    select_translate_math = input("Please input The arctive You like: ")
-    try:
-        if re.findall(r'^[0-9]{1,3}?$',select_translate_math)[0]:
-            print(select_translate_math)
-    except:
-        print('Input Error.Retry')
-
+        # 因为 for 的问题出现 bug...仅能查找到单个
+        '''
+        for fds in fd.readlines():
+            print('Please Choose:')
+            while True:
+                try:
+                    if re.findall(r'^%d$' % (int(input())) ,fds.split(' ')[0]):
+                        print(' '.join(fds.split(' ')[1:]))
+                except ValueError:
+                    print('Input Error')
+                    continue
+        '''
+read_translate()
