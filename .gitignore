@@ -89,6 +89,6 @@ ENV/
 .ropeproject
 
 # Project
-TranslateProject
-translateproject
+TranslateProject/
+translateproject/
 *.pyc
