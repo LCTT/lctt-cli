@@ -14,18 +14,16 @@ def main():
     # 为 Windows 用户提供参数选择
     try:
         argv_command = sys.argv[1]
+        print(argv_command)
         if argv_command == '-V' or argv_command == '--version':
             print('''
-            Version: 0.0.2
-            # 健壮并且解决环境问题
+            Version: 0.0.3
+            # 解决用户输入问题，优化修复一些小问题。
             ''')
         elif argv_command == '--list' or argv_command == '-ls':
             list_and_find()
-        elif argv_command == '--commit' or argv_command =='-cm':
-            create_and_del().del_translated_file()
         elif argv_command == '--check' or argv_command =='-ck':
             package_pip_check()
-        #   input_check()
         elif argv_command == '--clone' or argv_command =='-cp':
             print('You can put \'TranslateProject\' to \'./lctt-cli/test/tmp/\' by youself.')
             print('Then you can pass follow. -> ( Ctrl+C )')
@@ -36,6 +34,9 @@ def main():
                 print('Program stop')
                 exit(0)
             download_translate_project().downloading_now()
+        elif argv_command == '--commit' or argv_command =='-cm':
+            select_translated()
+            download_translate_project().downloading_now().del_and_remove_downloaing()
         else:
             # 不在预期输入内容
             raise IndexError

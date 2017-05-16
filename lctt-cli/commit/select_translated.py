@@ -19,42 +19,32 @@ class download_translate_project():
                 git.Repo.clone_from(url="https://github.com/lctt/TranslateProject", to_path="TranslateProject")
         # 解压wget下载的文件
         def unzip():
+            # 删除解压文件并移动
             os.system('python -m zipfile -e .\TranslateProject.zip .\list')
-        # 删除解压文件并移动
-        def del_and_remove_downloaing():
-            # wget 操作
-            if os.path.exists('.\TranslateProject.zip'): os.remove('.\TranslateProject.zip')
-            if os.path.exists('.\list\TranslateProject-master'): os.rename('.\list\TranslateProject-master','.\list\TranslateProject')
-            # git 操作
-            if os.path.exists('.\TranslateProject'): os.rename('.\TranslateProject','.\list\TranslateProject')
         try:
             wget_zip_download()
             unzip()
-            del_and_remove_downloaing()
         except:
             git_github_clone()
-            del_and_remove_downloaing()
-        finally:
-            del_and_remove_downloaing()
 
-def read_translate():
+            def del_and_remove_downloaing():
+                # wget 操作
+                if os.path.exists('.\TranslateProject.zip'): os.remove('.\TranslateProject.zip')
+                if os.path.exists('.\list\TranslateProject-master'): os.rename('.\list\TranslateProject-master','.\list\TranslateProject')
+                # git 操作
+                if os.path.exists('.\TranslateProject'): os.rename('.\TranslateProject','.\list\TranslateProject')
+
+def select_translated():
     file=os.path.dirname(__file__)+'/../test/tmp/translate_choose.txt'
-    with open(file=file,mode='r',encoding='utf-8') as fd:
-        for fds in fd.readlines():
-            fileid=fds.split(' ')[0]                # ID
-            filename=' '.join(fds.split(' ')[1:])   # NM
-            print(filename)
-
-        # 因为 for 的问题出现 bug...仅能查找到单个
-        '''
-        for fds in fd.readlines():
-            print('Please Choose:')
-            while True:
-                try:
-                    if re.findall(r'^%d$' % (int(input())) ,fds.split(' ')[0]):
-                        print(' '.join(fds.split(' ')[1:]))
-                except ValueError:
-                    print('Input Error')
-                    continue
-        '''
-read_translate()
+    with open(file=file,mode='r',encoding='utf-8') as fds:
+        try:
+            tips=input("Make Your Choose: ")
+            if re.findall(r'^%d$' % (int(tips)), tips):
+                print(fds.readlines()[int(tips)])
+                exit(0)
+        # 排除输入中文
+        except ValueError:
+            print('Error INPUT:(')
+            exit(1)
+        finally:
+            fds.close()

@@ -12,8 +12,6 @@ def package_pip_check():
     print('OK!'+'\n')
     return True
 
-
-
 ###############################################################
 # 方法已经更改，不在需要如下
 def git_command_check():
