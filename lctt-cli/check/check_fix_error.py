@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+import os,requests
 
 def package_pip_check():
-    import os
-    lctt_of_python_need_download=['wget']
+    lctt_of_python_need_download=['wget','requests','git']
     for import_pip in lctt_of_python_need_download:
         try:
             exec('import '+ import_pip)
@@ -15,7 +15,6 @@ def package_pip_check():
 ###############################################################
 # 方法已经更改，不在需要如下
 def git_command_check():
-    import requests
     set_length=0
     set_command='git'
     for null in os.popen(set_command).readlines():
@@ -31,10 +30,7 @@ def git_command_check():
         os.system("PortableGit-2.12.2.2-32-bit.7z.exe")
     return True
 
-def check():
-    if package_pip_check() == True:
-        print('\n')
-        print('Python Package Management was ok')
+def git_check():
     if git_command_check() == True:
         print('Git Command ............  was ok')
-    return True
+
