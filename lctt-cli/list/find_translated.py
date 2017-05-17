@@ -2,9 +2,8 @@
 # -*- coding:utf-8 -*-
 import os,re
 
-
-class create_and_del:
-
+class create_and_del():
+    # 定义初始变量
     def __init__(self,dir=None,file=None):
         self.dir=os.path.dirname(__file__)+'/../test/tmp'
         self.file=os.path.dirname(__file__)+'/../test/tmp/translate_choose.txt'
@@ -14,7 +13,7 @@ class create_and_del:
             fd.write(str(write).encode('utf-8'))
             fd.close()
 
-    def del_translated_file(self):
+    def make_list_was_clean(self):
         if not os.path.isdir(self.dir):
             os.makedirs(self.dir)
         elif os.path.exists(self.file):
@@ -24,8 +23,8 @@ def list_and_find():
     # initialize var
     num=0
     # 保证文件为空，无历史信息
-    create_and_del().del_translated_file()
-    # 如果用户直接解压进去，保证程序找得到
+    create_and_del().make_list_was_clean()
+    # 如果用户直接解压进去list，保证程序找得到
     if os.path.exists('.\list\TranslateProject-master'): os.rename('.\list\TranslateProject-master','.\list\TranslateProject')
     rootdir=os.path.dirname(__file__)+'/TranslateProject/sources/'
     # 三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字
