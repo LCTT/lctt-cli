@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 import os,re
 
+
 class create_and_del:
 
     def __init__(self,dir=None,file=None):
@@ -20,6 +21,12 @@ class create_and_del:
             os.remove(self.file)
 
 def list_and_find():
+    # initialize var
+    num=0
+    # 保证文件为空，无历史信息
+    create_and_del().del_translated_file()
+    # 如果用户直接解压进去，保证程序找得到
+    if os.path.exists('.\list\TranslateProject-master'): os.rename('.\list\TranslateProject-master','.\list\TranslateProject')
     rootdir=os.path.dirname(__file__)+'/TranslateProject/sources/'
     # 三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字
     for parent,dirnames,filenames in os.walk(rootdir):
@@ -36,7 +43,8 @@ def list_and_find():
                     translated=re.findall(r'(?i)(translated|translating|fanyi|翻译中|申请翻译|github.com)',read_of_translating)
                     if translated == []:
                         write=filename
-                        for write in list(write.split(',')):
+                        for (write) in list(write.split(',')):
+                            num+=1
                             create_and_del().create_and_putfiles(write+'\n')
-                            print(write)
+                            print(num,write)
                     files.close()

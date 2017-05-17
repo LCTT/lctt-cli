@@ -40,7 +40,8 @@ def select_translated():
         try:
             tips=input("Make Your Choose: ")
             if re.findall(r'^%d$' % (int(tips)), tips):
-                print(fds.readlines()[int(tips)])
+                # 必须-1，文件最后一行有空行 或者 计算机由 0 开始。
+                print(fds.readlines()[int(tips)-1])
                 exit(0)
         # 排除输入中文
         except ValueError:
