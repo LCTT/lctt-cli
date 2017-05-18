@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-import os,re
+import os,re,sys
+# sys.path.insert(0,os.path.realpath(os.path.dirname(__file__)+'/../test/tmp'))
+# import settings
 
 class create_and_del():
     # 定义初始变量
@@ -27,8 +29,7 @@ def list_and_find():
     # 如果用户直接解压进去list，保证程序找得到
     if os.path.exists('.\list\TranslateProject-master'): os.rename('.\list\TranslateProject-master','.\list\TranslateProject')
     # 如果 translate_choose.txt 文件丢失，确保再生
-    if os.path.isfile('\\..\\test\\tmp\\translate_choose.txt')==False: open(os.path.dirname(__file__)+'\\..\\test\\tmp\\translate_choose.txt','wb').close()
-    # 定义位置
+    if os.path.isfile('..\\test\\tmp\\translate_choose.txt')==False: open(os.path.dirname(__file__)+'\\..\\test\\tmp\\translate_choose.txt','wb').close()
     rootdir=os.path.dirname(__file__)+'/TranslateProject/sources/'
     # 三个参数：分别返回1.父目录 2.所有文件夹名字（不含路径） 3.所有文件名字
     for parent,dirnames,filenames in os.walk(rootdir):
@@ -39,33 +40,23 @@ def list_and_find():
                 # 将文件位置进行列出
                 source_strings=os.path.join(parent,filename).replace('\\','/')   # 完整路径
                 # 将完整路径进行读取
-                try:
-                    with open(source_strings, 'r', encoding='utf-8') as files:
-                        # 仅仅读取首行
-                        translated=re.findall(r'(?i)(translated|translating|fanyi|翻译中|申请翻译|github.com)',files.readlines()[0])
-                        if translated == []:
-                            for filename in list(filename.split(',')):
-                                num+=1
-                                create_and_del().create_and_putfiles(filename+'\n')
-                                print(num,filename)
-                except IndexError:
-                    pass
-                finally:
-                    files.close()
-
-
-
-#     with open(source_strings,'r',encoding='utf-8') as files:
-#         # 仅仅读取首行
-#         try:
-#             for read_of_translating in files.readlines()[0]:
-#                 translated=re.findall(r'(?i)(translated|translating|fanyi|翻译中|申请翻译|github.com)',read_of_translating)
-#                 if translated == []:
-#                     for (filename) in list(filename.split(',')):
-#                         num+=1
-#                         create_and_del().create_and_putfiles(filename+'\n')
-#                         print(num,filename)
-#         except IndexError:
-#             pass
-#         finally:
-#             files.close()
+                with open(source_strings,'r',encoding='utf-8') as files:
+                    print(files.readlines()[0])
+         #          # 仅仅读取首行
+         #          read_of_translating=files.readlines()[0]
+         #          print(read_of_translating)
+         #          translated=re.findall(r'(?i)(translated|translating|fanyi|翻译中|申请翻译|github.com)',files.readlines()[0])
+         #          print(translated)
+#                   translated=re.findall(r'(?i)(translated|translating|fanyi|翻译中|申请翻译|github.com)',read_of_translating)
+#                   if translated == []:
+#                       write=filename
+#               #       # 超全局变量
+#               #       def stuff():
+#               #           settings.init()
+#               #           settings.myList.append(write)
+#                       for (write) in list(write.split(',')):
+#                           num+=1
+#                           create_and_del().create_and_putfiles(write+'\n')
+#                           print(num,write)
+#                   files.close()
+list_and_find()

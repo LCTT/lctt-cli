@@ -46,7 +46,11 @@ def main():
         elif argv_command == 'list' or argv_command == '-ls':
             list_and_find()
         elif argv_command == 'commit' or argv_command =='-cm':
-            select_translated()
+            try:
+                select_translated()
+            except KeyboardInterrupt:
+                print('Program stop')
+                exit(0)
         else:
             # 不在预期输入内容
             raise IndexError
