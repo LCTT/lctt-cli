@@ -42,7 +42,7 @@ def list_and_find():
                 try:
                     with open(source_strings, 'r', encoding='utf-8') as files:
                         # 仅仅读取首行
-                        translated=re.findall(r'(?i)(translated|translating|fanyi|翻译中|申请翻译|github.com)',files.readlines()[0])
+                        translated=re.findall(r'(?i)(translated|tranlated|translating|fanyi|翻译中|申请翻译|github.com)',files.readlines()[0])
                         if translated == []:
                             for filename in list(filename.split(',')):
                                 num+=1
@@ -52,20 +52,3 @@ def list_and_find():
                     pass
                 finally:
                     files.close()
-
-
-
-#     with open(source_strings,'r',encoding='utf-8') as files:
-#         # 仅仅读取首行
-#         try:
-#             for read_of_translating in files.readlines()[0]:
-#                 translated=re.findall(r'(?i)(translated|translating|fanyi|翻译中|申请翻译|github.com)',read_of_translating)
-#                 if translated == []:
-#                     for (filename) in list(filename.split(',')):
-#                         num+=1
-#                         create_and_del().create_and_putfiles(filename+'\n')
-#                         print(num,filename)
-#         except IndexError:
-#             pass
-#         finally:
-#             files.close()

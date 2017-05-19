@@ -13,18 +13,19 @@ def select_translated(translate_filename=None):
             tips=input("Make Your Choose: ")
             if re.findall(r'^%d$' % (int(tips)), tips):
                 # 必须-1，文件最后一行有空行 或者 计算机由 0 开始。
-                translate_filename=fds.readlines()[int(tips)-1] # 列出用户选择
-
-                ############
-                location = os.path.realpath(os.path.dirname(__file__+'/../list/TranslateProject/sources/'))
-                print(location+'/location/')
-                print(os.path.isfile(location+'/talk/'+translate_filename))
-                print(os.path.isfile(location+'/tech/'+translate_filename))
+                translate_filename=fds.readlines()[int(tips)-1].strip() # 列出用户选择
+                location = os.path.realpath(os.path.dirname(__file__)+'/../list/TranslateProject/sources/')
                 # 使用 glob 方法更好
-                # info=(glob.glob(os.path.realpath(os.path.dirname(__file__)+'/../list/TranslateProject/sources/*/*.md')))
-                # print(str('\n'.join(info).split('\\')).replace('\\nC','').replace(':',''))
-                ##############
-
+                for translate_filenamepath in glob.glob(location+'/*/*.md'):
+                    # 如果查询被找到
+                    find_transalte_filename=(str(translate_filenamepath.split('\\')[-1]).find(str(translate_filename)))
+                    if find_transalte_filename == int(0):
+                        with open(str(translate_filenamepath),mode='r+',encoding='utf-8') as fd:
+                            # 使用 .seek 进行定位，或使用'contect'+fd.read()
+                            fd.seek(0,0)
+                            fd.writelines('something'+'\n')
+                            fd.close()
+                        print(translate_filenamepath+'\n\n'+'Finished.')
         # 排除输入中文、超过边界
         except:
             print('Error INPUT:(')
