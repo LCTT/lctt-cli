@@ -51,6 +51,8 @@ def main():
             except KeyboardInterrupt:
                 print('Program stop')
                 exit(0)
+            finally:
+                send_to_github()
         else:
             # 不在预期输入内容
             raise IndexError
