@@ -46,16 +46,11 @@
 20170303 How to work around video and subtitle embed errors.md
 20170310 A public cloud migration in 22 days.md
 20170310 Developer-defined application delivery.md
-20170312 OpenGL  Go Tutorial Part 2 Drawing the Game Board.md
 20170312 OpenGL  Go Tutorial Part 3 Implementing the Game.md
 20170322 From Node to Go A High-Level Comparison.md
 20170330 Study Ruby Programming with Open-Source Books.md
 20170403 Introducing Flashback an Internet mocking tool.md
 20170410 Writing a Time Series Database from Scratch.md
-20170422 FEWER MALLOCS IN CURL.md
-20170508 4 terminal applications with great command-line UIs.md
 20170508 8 ways to get started with open source hardware.md
-20170509 4 Python libraries for building great command-line user interfaces.md
 20170509 Much ado about communication.md
 20170516 What's the point of DevOps.md
-20170518 Maintaining a Git Repository.md

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-import os,sys,re,glob
+import os,sys,re,glob,webbrowser
+from selenium import webdriver
 # sys.path.insert(0,os.path.realpath(os.path.dirname(__file__)+'/../test/tmp/'))
 # import settings
 # sys.path.insert(0,os.path.realpath(os.path.dirname(__file__)+'/../list/'))
@@ -23,13 +24,22 @@ def select_translated(translate_filename=None):
                         with open(str(translate_filenamepath),mode='r+',encoding='utf-8') as fd:
                             # 使用 .seek 进行定位，或使用'contect'+fd.read()
                             fd.seek(0,0)
-                            fd.writelines('something'+'\n')
+                            with open( os.path.realpath(os.path.dirname(__file__)+'\\..\\account.ini'),mode='r',encoding='utf-8') as information_fd:
+                                username=str(information_fd.read().split('\n')[0].split(':')[1])
+                                fd.writelines(username+'[https://github.com/'+username+'/] is translating'+'\n')
+                                information_fd.close()
+                                # fd.writelines('%s'+'[https://github.com/%s/] is translating'+'\n') % (username,username)
+                                # fd.writelines('{0}'+'[https://github.com/{1}/] is translating'+'\n'.format(str(username),str(username)))
                             fd.close()
                         print(translate_filenamepath+'\n\n'+'Finished.')
         # 排除输入中文、超过边界
-        except:
-            print('Error INPUT:(')
+        except ValueError:
+            print('Error INPUT:( ')
             exit(1)
         # 最后一点清理工作
         finally:
             fds.close()
+
+def send_to_github():
+    print(*range(1,100,2))
+send_to_github()
