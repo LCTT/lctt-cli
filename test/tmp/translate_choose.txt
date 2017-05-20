@@ -1,0 +1,56 @@
+20170113 Tips for non-native English speakers working on open source projects.md
+20170120 How is your community promoting diversity.md
+20170126 A 5-step plan to encourage your team to make changes on your project.md
+20170131 Be the open source supply chain.md
+20170131 Book review Ours to Hack and to Own.md
+20170131 Developing open leaders.md
+20170201 GOOGLE CHROME–ONE YEAR IN.md
+20170202 Why we need open leaders more than ever.md
+20170203 4 questions to answer when choosing community metrics to measure.md
+20170203 How the University of Hawaii is solving todays higher ed problems.md
+20170206 A graduate degree could springboard you into an open source job.md
+20170207 How to Manage the Security Vulnerabilities of Your Open Source Product.md
+20170209 Poverty Helps You Keep Technology Safe and Easy.md
+20170210 How I became a project team leader in open source.md
+20170213 Free as in puppy The hidden costs of free software.md
+20170215 Talk of tech innovation is bullshit. Shut up and get the work done – says Linus Torvalds.md
+20170216 Open Source First A manifesto for private companies.md
+20170303 A Programmes Introduction to Unicode.md
+20170308 Does your open source project need a president.md
+20170310 How to use pull requests to improve your code reviews.md
+20170310 Why DevOps is the end of security as we know it.md
+20170314 One Year Using Go.md
+20170317 Why AlphaGo Is Not AI.md
+20170320 Education of a Programmer.md
+20170321 7 ways to discuss legal matters with an open community.md
+20151208 10 tools for visual effects in Linux with Kdenlive.md
+20161006 Go Serverless with Apex and Composes MongoDB.md
+20161216 Kprobes Event Tracing on ARMv8.md
+20170109 Open technology for land rights documentation.md
+20170117 The Age of the Unikernel- 10 Projects to Know.md
+20170117 This Script Updates Hosts Files Using a Multi-Source Unified Block List With Whitelisting.md
+20170118 Red Hat's OpenShift Container Platform Expands Cloud Options.md
+20170119 The End Of An Era A Look Back At The Most Popular Solaris Milestones.md
+20170123 Fedora 24 Gnome HP Pavilion Nvidia setup review.md
+20170124 Making the move from Scala to Go and why were not going back.md
+20170126 Useful Meld tipstricks for intermediate users.md
+20170131 How to install OTRS (OpenSource Trouble Ticket System) on CentOS 7.md
+20170201 Dedicated engineering team in South Africa deploys open source tools save lives.md
+20170201 Performance made easy with Linux containers.md
+20170208 Blocking of international spam botnets with a Postfix plugin.md
+20170209 Inside Real-Time Linux.md
+20170209 The benefits of tracking issues publicly.md
+20170214 Software-Defined Storage Opens Up 10 Projects to Know.md
+20170222 The Perfect Server CentOS 7.3 with Apache Postfix Dovecot Pure-FTPD BIND and ISPConfig 3.1.md
+20170302 Monitoring a production-ready microservice.md
+20170303 How to work around video and subtitle embed errors.md
+20170310 A public cloud migration in 22 days.md
+20170310 Developer-defined application delivery.md
+20170312 OpenGL  Go Tutorial Part 3 Implementing the Game.md
+20170322 From Node to Go A High-Level Comparison.md
+20170330 Study Ruby Programming with Open-Source Books.md
+20170403 Introducing Flashback an Internet mocking tool.md
+20170410 Writing a Time Series Database from Scratch.md
+20170508 8 ways to get started with open source hardware.md
+20170509 Much ado about communication.md
+20170516 What's the point of DevOps.md
