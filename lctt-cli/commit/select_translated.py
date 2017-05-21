@@ -71,9 +71,17 @@ def send_to_github():
             # Fn means Filename
             driver.find_element_by_xpath('//*[@id="tree-finder-field"]').send_keys(translate_filename)
             # https://www.cnblogs.com/itxdm/p/6883815.html
-            time.sleep(1)
+            time.sleep(0.7)
             driver.find_element_by_xpath('//*[@id="tree-finder-field"]').send_keys('\n\r','\r\n')
+            time.sleep(1.7)
             # 进入编辑模式
+            driver.find_element_by_xpath('//*[@id="js-repo-pjax-container"]/div[2]/div[1]/div[3]/div[1]/div[1]/form[1]').click()
+            driver.find_element_by_xpath('//*[@id="new_blob"]/div[3]/div[1]/nav/button[2]').click()
+            time.sleep(2)
+            driver.find_element_by_xpath('//*[@id="new_blob"]/div[3]/div[1]/nav/button[1]').click()
+            time.sleep(0.7)
+            editFile=driver.find_element_by_xpath('//*[@id="new_blob"]/div[3]/div[2]/div/div[5]/div[1]/div/div/div/div[5]')
+            editFile.send_keys(loginuser+'[https://github.com/'+loginuser+'/] is translating',Keys.ENTER)
         except:
             pass
         finally:
