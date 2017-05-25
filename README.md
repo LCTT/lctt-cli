@@ -3,6 +3,10 @@
 
 为解决 “LCTT” Linux 环境下 “文章挑选” 翻译不便，特做出该脚本。
 
+<video width="100%" height="100%" x-webkit-airplay="allow" controls="controls">
+<source src="http://oeh7ojled.bkt.clouddn.com/lctt-cli.mkv">
+</video>
+
 ---------------
 
 ## 原 lctt-cli 已迁移至分支 [shell-cli](https://github.com/LCTT/lctt-cli/tree/shell-cli)
