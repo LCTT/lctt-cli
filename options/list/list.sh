@@ -27,7 +27,6 @@
   export LCTT=$(find / -iname TranslateProject 2>/dev/null |\
   awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
   #export LCTT2=$( dirname $( readlink -f $LCTT) )
-  # 进入目录并向主仓库拉取更新
   cd $LCTT/sources/
   
 # 列出总数
