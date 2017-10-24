@@ -11,6 +11,7 @@
   if [ "$(expr length "${exec[11]}")" -eq 0 ];then
     echo  "Fail to Find this file,Please retry..." 
   else 
+    cd $LCTT && git pull https://github.com/lctt/translateproject.git
     cd $(dirname "$NUMBER_PATH")
     USER=$(git config --list | awk -F "name=" '{print $2}' | xargs)                        
     sed -i "1i **translating by [$USER](https://github.com/$USER)**" "$NUMBER_PATH"

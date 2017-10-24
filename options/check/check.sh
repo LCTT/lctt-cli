@@ -22,3 +22,5 @@
  if [ ! $? -eq 0  ];then
  echo "Error: REPOSITORIES is not found"
  fi
+# Update Github Repo
+#git pull https://github.com/lctt/translateproject.git
