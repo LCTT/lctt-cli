@@ -24,7 +24,7 @@
   set -e
   
   # 找到文件夹并进入
-  export LCTT=$(find / -iname TranslateProject 2>/dev/null |\
+  export LCTT=$(find ~ -iname TranslateProject 2>/dev/null |\
   awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
   #export LCTT2=$( dirname $( readlink -f $LCTT) )
   cd $LCTT/sources/
@@ -41,9 +41,22 @@
 #   echo "talk have $talk_num article."
 # fi
 
+  function file-translating-p ()
+  {
+      local file="$@"
+      head "$file" |egrep "translate|fanyi|翻译" >/dev/null 2>&1
+  }
+
+  function show-if-not-translating ()
+  {
+      local file="$@"
+      if ! file-translating-p "$file";then
+          echo "$file"
+      fi
+  }
 # 开始查找
-  ``grep -RHEi "translated|translating|fanyi|翻译中|申请翻译" | \
-  awk -F ":" '{print $1}' | awk -F "/" '{print $2}'`` > /tmp/aaa.txt
-  ``find -type f 2>/dev/null | sed -e "s#^[ . ]/##" | awk -F '/' '{print $2}' | grep -v yearbook2015 | \
-  grep -v README.md``| grep -v "$( cat  /tmp/aaa.txt)"`` > /tmp/aa.txt
-  sed '/^$/d' /tmp/aa.txt | cat -n
+  # find ./ -type f -print0|xargs -0 -I{} bash ./show_if_not_translating.sh {} |cat -n
+  find ./ -type f -name "2*.md" -print|while read file
+  do
+      show-if-not-translating $file
+  done | sed -e "s#^[ . ]/##" | awk -F '/' '{print $2}' |cat -n
