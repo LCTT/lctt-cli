@@ -18,7 +18,7 @@ Script to help "LCTT" -->  **[TranslateProject](https://github.com/LCTT/Translat
 git clone https://github.com/LCTT/lctt-cli/ /usr/local/lctt-cli
 ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2
 ```
-### Solution ( `--check` Report By Option )
+### Solution ( Report By `--check` Option )
 
 ```
 Q1: Error: OS Language
