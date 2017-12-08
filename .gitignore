@@ -1,17 +1,18 @@
 # git ignore file for lctt-cli
 
-# 跟踪 .py类型的文件
+# 跟踪的文件类型
 !*.py
+!*.sh
 
-# 过滤以下类型的文件
+# 过滤的文件类型
 *.pyc
 *.pkl
 *.log
 *.swp
+*.txt
+__*__
 .idea/
+account.ini
 .python-version
 translateproject
 TranslateProject
-__*__
-account.ini
-*.txt
