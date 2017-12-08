@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# exit on exceptions.
+set -e
+
+export APP_NAME='lctt'
+
+# save LCTT TranslateProject directory and cd to lctt-cli project root.
+export LCTT_DIR="$(pwd)"
+cd "$(dirname "$(readlink -f "$0")")"/..
+
+# source library files.
+source ./lib/common/check_deps.sh
+source ./lib/common/error.sh
+source ./lib/common/usage.sh
+
+# check dependencies.
+check_deps git curl || {
+  for DEP in $MISSING_DEPS; do
+    error "Command \`${DEP}\` is required but not found."
+  done
+  exit 1
+}
+
+## USAGE START
+# Usage: COMMAND [OPTION...]
+# Description: LCTT Commandline Interface
+# Arguments:
+#   Commands:
+#     list: List LCTT articles
+#     claim: Claim an article
+#     submit: Submit an claimed article
+#     help: Print usage for commands
+## USAGE END
+
+# first argument COMMAND is mandatory, or print usage and exit otherwise.
+[ $# -lt 1 ] && {
+  print_usage ./bin/lctt
+  exit 1
+}
+
+# parse arguments.
+COMMAND="$1"
+COMMAND_SCRIPT="./lib/commands/${COMMAND}"
+
+# run command if exists, or print error and usage then exit otherwise.
+[ -x "$COMMAND_SCRIPT" ] && "$COMMAND_SCRIPT" ${@:2} || {
+  error "Unknown command $COMMAND."
+  print_usage ./bin/lctt
+  exit 1
+}

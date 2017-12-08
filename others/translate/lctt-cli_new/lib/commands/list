@@ -1,0 +1,86 @@
+#!/bin/bash
+
+set -e
+
+STATUS_ALL=
+SHOW_SOURCES=1
+SHOW_TRANSLATED=
+SHOW_PUBLISHED=
+
+# source library files.
+source ./lib/common/usage.sh
+
+## USAGE START
+# Usage: [OPTION...]
+# Description: List LCTT articles
+# Arguments:
+#   Options:
+#     --[no-]sources: List source directory or not (default: yes)
+#     --[no-]translated: List translated directory or not (default: no)
+#     --[no-]published: List published directory or not (default: no)
+#     --all: For source directory listing, show all articles
+#            (includes translating and translated articles)
+#     --help: Print usage for this command
+## USAGE END
+
+list() {
+  TYPE="$1"
+  ALL="$2"
+
+  {
+    [ "$TYPE" = 'sources' -a -z "$ALL" ] && {
+      KEYWORDS='Translated|translating|fanyi|翻译中|申请翻译'
+      grep -RLE "${KEYWORDS}" "${LCTT_DIR}/${TYPE}/"
+    } || {
+      find "${LCTT_DIR}/${TYPE}/" -type f -iname '*.md'
+    }
+  } | grep -vE '(README\.md|translated\.md)$' \
+    | grep -o "${TYPE}/.*$" | sed 's#^[^/]*/##'
+}
+
+for ARG in $@; do
+  case $ARG in
+    --sources)
+      SHOW_SOURCES=1
+      ;;
+    --no-sources)
+      SHOW_SOURCES=
+      ;;
+    --translated)
+      SHOW_TRANSLATED=1
+      ;;
+    --no-translated)
+      SHOW_TRANSLATED=
+      ;;
+    --published)
+      SHOW_PUBLISHED=1
+      ;;
+    --no-published)
+      SHOW_PUBLISHED=
+      ;;
+    --all)
+      STATUS_ALL=1
+      ;;
+    --help)
+      print_usage "$0" "$APP_NAME $(basename $0)"
+      exit 0
+      ;;
+    *)
+      ./lib/error "Unknown argument $ARG"
+  esac
+done
+
+[ -n "$SHOW_SOURCES" ] && {
+  echo "Sources:"
+  list sources "$STATUS_ALL"
+} || true
+
+[ -n "$SHOW_TRANSLATED" ] && {
+  echo "Translated:"
+  list translated
+} || true
+
+[ -n "$SHOW_PUBLISHED" ] && {
+  echo "Published:"
+  list published
+} || true
