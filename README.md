@@ -2,13 +2,14 @@
 
 Script to help "LCTT" -->  **[TranslateProject](https://github.com/LCTT/TranslateProject)**
 
-![lctt-cli Gif](https://raw.githubusercontent.com/LCTT/lctt-cli/images/lctt-cli.gif)
+![lctt-cli Gif](https://raw.githubusercontent.com/LCTT/lctt-cli/master/images/lctt-cli.gif)
 
 ## Platforms
 
-- RHEL/CentOS and derivatives
+- CentOS/Fedora and derivatives
 - Debian/Ubuntu and derivatives
-- Plan to Windows for [Git SCM](https://git-for-windows.github.io/)
+- WindowsXP/7/8/10 for [Git SCM](https://git-for-windows.github.io/)
+- Bash on WSL(Windows Subsystem for Linux)
 
 ## Recipes
 ### Installation
@@ -20,8 +21,8 @@ ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2
 ### Solution ( `--check` Report By Option )
 
 ```
-Q: `Error: OS Language`
-A: Try to set environment variable 'LANG=zh_CN.UTF-8'
+Q1: Error: OS Language
+A1: Try to set environment variable 'LANG=zh_CN.UTF-8'
 ```
 
 ## License & Authors
