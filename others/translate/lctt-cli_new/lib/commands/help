@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+# source library files.
+source ./lib/common/usage.sh
+
+## USAGE START
+# Usage: COMMAND
+# Description: Print usage for commands
+## USAGE END
+
+COMMAND="$1"
+COMMAND_SCRIPT="./lib/commands/${COMMAND}"
+
+[ $# -eq 1 -a "$1" = '--help' ] && {
+  print_usage "$0" "$APP_NAME $(basename $0)"
+  exit 0
+}
+
+[ -x "$COMMAND_SCRIPT" ] && "$COMMAND_SCRIPT" --help || {
+  error "Unknown command $COMMAND."
+  exit 1
+}
