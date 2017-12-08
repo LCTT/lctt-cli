@@ -29,8 +29,8 @@
   if [ ! "$#" -lt 1  ];then
     case $1 in
       --list)
-        bash $(dirname $(readlink -f $0))/options/list/list.sh
-        ;;
+		bash $(dirname $(readlink -f $0))/options/list/list.sh
+		;;
       --commit)
         bash $(dirname $(readlink -f $0))/options/commit/commit.sh
         ;;
