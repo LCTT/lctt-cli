@@ -17,7 +17,7 @@
   test $LANGUAGE = 'zh_CN' ||  test $LANGUAGE = 'UTF-8' || printf "Error: OS Language $LANGUAGE \nYou can try to set 'LANG=zh_CN.UTF-8'\nWarning: Query result maybe happen wroing becaue OS not support Chinese Langagues.\n" 
 
 # Check USER NAME EXIST.
-  if [ -z $LCTT_USER];then
+  if [ -z ${LCTT_USER} ];then
     echo 'Error: Configure user.name AND user.email.'
   fi
 
