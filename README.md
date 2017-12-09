@@ -25,6 +25,11 @@ Q1: Error: OS Language
 A1: Try to set environment variable 'LANG=zh_CN.UTF-8'
 ```
 
+```
+Q2: Error: Configure user.name AND user.email
+A2: Configure user.name AND user.email INTO git repository. See More with TranslateProject Wiki.
+```
+
 ## License & Authors
 
 **Author:** Linux.Cn Translation Team ([jiwenkangatech@foxmail.com](mailto:jiwenkangatech@foxmail.com))
