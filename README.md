@@ -27,11 +27,9 @@ A1: Try to set environment variable 'LANG=zh_CN.UTF-8'
 
 ```
 Q2: Error: Configure user.name AND user.email
-A2: Please configure user.name AND user.email INTO git repository. 
+A2: Configure user.name AND user.email INTO git repository
+```
 See More:[配置用户名和邮箱](https://github.com/LCTT/TranslateProject/wiki/05-Linux%E4%B8%8B%E7%BF%BB%E8%AF%91%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97%EF%BC%88%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%89)
-```
-Q1: Error: 
-```
 
 ## License & Authors
 
