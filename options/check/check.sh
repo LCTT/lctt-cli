@@ -7,8 +7,7 @@
   for SOFT in git readlink ssh
   do
     hash $SOFT 1>/dev/null 2>&1 || {
-        echo "Error: COMMAND $SOFT is not install"
-        exit 1
+        echo "Error: COMMAND $SOFT could not be called"
     }
   done
 
@@ -21,8 +20,8 @@
     echo 'Error: Configure user.name AND user.email.'
   fi
 
-# Check repositories
-#git config --list | awk -F 'user.name=' '{print $2}' | sort -rn | uniq -d | head -n1
-
 # Update Github Repo
-#git pull https://github.com/lctt/translateproject.git
+  # Found folder
+    export LCTT=$(find / -iname TranslateProject 2>/dev/null |\
+    awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
+  cd $LCTT && git pull https://github.com/lctt/translateproject.git
