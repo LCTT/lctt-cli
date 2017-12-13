@@ -7,7 +7,7 @@
 # Found folder
   export LCTT=$(find / -iname TranslateProject 2>/dev/null |\
   awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
-  
+
 # List Translating.
   cd $LCTT
   grep -RHEni 'github.com/erlinux' | awk -F ':1:' '/:1:/{ print $1 }'
