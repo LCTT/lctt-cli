@@ -22,7 +22,7 @@ ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2
 
 ```
 Q1: Error: OS Language
-A1: Try to set environment variable 'LANG=zh_CN.UTF-8'
+A1: Try to set environment variable 'LANG=zh_CN.UTF-8'.
 ```
 
 ```
@@ -30,6 +30,10 @@ Q2: Error: Configure user.name AND user.email
 A2: Configure user.name AND user.email INTO git repository. See More with TranslateProject Wiki.
 ```
 
+```
+Q3: fatal: Not a git repository (or any of the parent directories): .git
+A3: Please execute `git clone git@github:<youname>/TranslateProject.git` in anywhere.
+```
 ## License & Authors
 
 **Author:** Linux.Cn Translation Team ([jiwenkangatech@foxmail.com](mailto:jiwenkangatech@foxmail.com))
