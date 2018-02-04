@@ -10,7 +10,7 @@
 
 # List Translating.
   cd $LCTT
-  grep -RHEni 'github.com/erlinux' | awk -F ':1:' '/:1:/{ print $1 }'
+  grep -RHEni "github.com/${LCTT_USER}" | awk -F ':1:' '/:1:/{ print $1 }'
   echo -e "\e[1;33mYou translating...\e[0m" && read
 
 # Core: Goto Find untransalte Acticle.
