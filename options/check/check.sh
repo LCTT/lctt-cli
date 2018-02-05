@@ -20,8 +20,37 @@
     echo 'Error: Configure user.name AND user.email.'
   fi
 
-# Update Github Repo
+#Install 'locate' command package for specific platform
+  #Get OS type
+  OSTYPE=$(cat /etc/issue | awk 'BEGIN {FS=" ";linecount = 0;nonzero = 1} {if(linecount == 0)print $1;linecount=nonzero}')
+  
+if [ "$OSTYPE" = "Ubuntu" ]; then
+	printf "The OS of this computer is Ubuntu.\n"
+	hash locate 1>/dev/null 2>&1 || {
+		printf "Trying to install package contain 'locate' command, press 'enter' to continue or 'ctrl + c' to quit.\n" && read
+		sudo apt install mlocate
+		sudo updatedb
+	}
+elif [ "$OSTYPE" = "CentOS" ]; then
+	printf "The OS of this computer is Centos.\n"
+	hash locate 1>/dev/null 2>&1 || {
+		printf "Trying to install package contain 'locate' command, press 'enter' to continue or 'ctrl + c' to quit.\n" && read
+		sudo yum install -y mlocate
+		sudo updatedb
+	}
+elif [ "$OSTYPE" = "Arch" ]; then
+	printf "The OS of this computer is Arch.\n"
+	hash locate 1>/dev/null 2>&1 || {
+		printf "Trying to install package contain 'locate' command, press 'enter' to continue or 'ctrl + c' to quit.\n" && read
+		sudo yum -y install mlocate
+		sudo updatedb
+	}
+else
+	printf "Can't recongize the OS of this Computer!Please install 'mlocate' package manually and restart the program!\n"
+fi
+
+  # Update Github Repo
   # Found folder
-    export LCTT=$(find / -iname TranslateProject 2>/dev/null |\
+    export LCTT=$(locate --basename TranslateProject 2>/dev/null |\
     awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
   cd $LCTT && git pull https://github.com/lctt/translateproject.git
