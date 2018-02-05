@@ -42,7 +42,7 @@
 #	printf "The OS of this computer is Arch.\n"
 	hash locate 1>/dev/null 2>&1 || {
 #		printf "Trying to install package which provides 'locate' command, press 'enter' to continue or 'ctrl + c' to quit.\n" && read
-		sudo yum -y install mlocate
+		sudo pacman -Sy --noconfirm mlocate
 		sudo updatedb
 	}
   else
