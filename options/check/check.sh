@@ -25,23 +25,23 @@
   OSTYPE=$(cat /etc/issue | awk 'BEGIN {FS=" ";linecount = 0;nonzero = 1} {if(linecount == 0)print $1;linecount=nonzero}')
   #Try to install mlocate package according to 'OSTYPE'
   if [ "$OSTYPE" = "Ubuntu" ]; then
-	printf "The OS of this computer is Ubuntu.\n"
+#	printf "The OS of this computer is Ubuntu.\n"
 	hash locate 1>/dev/null 2>&1 || {
-		printf "Trying to install package which provides 'locate' command, press 'enter' to continue or 'ctrl + c' to quit.\n" && read
+#		printf "Trying to install package which provides 'locate' command, press 'enter' to continue or 'ctrl + c' to quit.\n" && read
 		sudo apt install mlocate
 		sudo updatedb            #when first install mlocate, we have to generate database
 	}
   elif [ "$OSTYPE" = "CentOS" ]; then
-	printf "The OS of this computer is Centos.\n"
+#	printf "The OS of this computer is Centos.\n"
 	hash locate 1>/dev/null 2>&1 || {
-		printf "Trying to install package which provides 'locate' command, press 'enter' to continue or 'ctrl + c' to quit.\n" && read
+#		printf "Trying to install package which provides 'locate' command, press 'enter' to continue or 'ctrl + c' to quit.\n" && read
 		sudo yum install -y mlocate
 		sudo updatedb
 	}
  elif [ "$OSTYPE" = "Arch" ]; then
-	printf "The OS of this computer is Arch.\n"
+#	printf "The OS of this computer is Arch.\n"
 	hash locate 1>/dev/null 2>&1 || {
-		printf "Trying to install package which provides 'locate' command, press 'enter' to continue or 'ctrl + c' to quit.\n" && read
+#		printf "Trying to install package which provides 'locate' command, press 'enter' to continue or 'ctrl + c' to quit.\n" && read
 		sudo yum -y install mlocate
 		sudo updatedb
 	}
