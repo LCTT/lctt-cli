@@ -34,13 +34,15 @@ A2: Configure user.name AND user.email INTO git repository. See More with Transl
 Q3: fatal: Not a git repository (or any of the parent directories): .git
 A3: Please execute `git clone git@github:<youname>/TranslateProject.git` in anywhere.
 ```
-## DIRECTOR & Authors & License 
+## DIRECTOR 
 
 | LOCATION          | DIRECTOR                                 | DATE        |
 | ----------------- | ---------------------------------------- | ----------- |
 | **options/check** | *[leemeans](https://github.com/leemeans)* | 2018/2/6    |
 | options/commit    | [erlinux](https://github.com/erlinux)    | Jan 1, 2017 |
 | *options/list*    | [erlinux](https://github.com/erlinux)    | Jan 1, 2017 |
+
+## Authors & License 
 
 **Author:** Linux.Cn Translation Team ([jiwenkangatech@foxmail.com](mailto:jiwenkangatech@foxmail.com))
 
