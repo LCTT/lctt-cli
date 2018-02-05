@@ -51,6 +51,6 @@
 
   # Update Github Repo
   # Found folder
-    export LCTT=$(locate --basename TranslateProject 2>/dev/null |\
+    export LCTT=$(locate --ignore-case --basename TranslateProject 2>/dev/null |\
     awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
   cd $LCTT && git pull https://github.com/lctt/translateproject.git
