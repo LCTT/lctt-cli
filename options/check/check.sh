@@ -43,14 +43,32 @@
  		sudo updatedb
 	}
   else
-	printf "fatal:Can't detect OS type of this Computer! \ 
+	printf "fatal:Can't detect OS type of this Computer!
                 Please install 'mlocate' package manually and restart the program!\n"
         exit 1
   fi
 
 # Found folder
-  export LCTT=$(locate --ignore-case --basename TranslateProject 2>/dev/null |\
-  awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
+  function folder(){
+      if [ -d "${LCTT}" ] && [[ $(grep -Ei '^(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$' "${LCTT}" && return 0) -eq 0 ]];then
+          echo yes
+      fi
+  }
+
+  LCTT=$(echo "$1 $2" | \
+           grep --color=auto -Ei '^(-d)+[[:space:]]*(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$' || exit 1 | \
+           awk '/-d/{ print $2 }')
+  folder
+  LCTT=$(awk '/Project=/{ print $2 }' /tmp/lctt.cfg)
+  folder
+  LCTT=$(locate --ignore-case --basename TranslateProject 2>/dev/null |\
+           awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
+  folder
+  LCTT=$(find / -iname TranslateProject 2>/dev/null |\
+           awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
+  folder
+
+  exit 0
 
 # Update Github Repo
   cd $LCTT && git pull https://github.com/lctt/translateproject.git
