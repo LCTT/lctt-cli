@@ -12,9 +12,13 @@
 # Core: Write And Send.
   sed -i "1i **translating by [$LCTT_USER](https://github.com/$LCTT_USER)**\n" "$NUMBER_PATH"
   echo $NUMBER_PATH
+  git_time=$(date +%s)
+  git branch ${git_time} master
+  git checkout ${git_time}
   git add "$NUMBER_PATH"
   git commit -am "Translating By $LCTT_USER "
-  git push origin master
+  git push origin ${git_time}
+  git checkout master
 
 # Say Thx
   test $? -eq 0 && {

@@ -43,14 +43,38 @@
  		sudo updatedb
 	}
   else
-	printf "fatal:Can't detect OS type of this Computer! \ 
+	printf "fatal:Can't detect OS type of this Computer!
                 Please install 'mlocate' package manually and restart the program!\n"
         exit 1
   fi
 
 # Found folder
+  function folder(){
+      regex='^(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$'
+      if [[ $LCTT =~ $regex ]];then
+          return 0
+      fi
+  #   if [ -d "${LCTT}" ] && [ $(grep -Ei '^(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$' `printenv LCTT` && return 0) -eq 0 ];then
+  #       echo yes
+  #   else
+  #       echo no
+  #   fi
+  }
+
+  export LCTT=$(echo "$1 $2" | \
+           grep --color=auto -Ei '^(-d)+[[:space:]]*(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$' | \
+           awk '/-d/{ print $2 }')
+  folder
+  export LCTT=$(awk -F 'Project=' '{ print $2 }' /tmp/lctt.cfg)
+  folder
   export LCTT=$(locate --ignore-case --basename TranslateProject 2>/dev/null |\
-  awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
+           awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
+  folder
+  export LCTT=$(find / -iname TranslateProject 2>/dev/null |\
+           awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
+  folder
+
+# printenv LCTT # FOR TEST
 
 # Update Github Repo
   cd $LCTT && git pull https://github.com/lctt/translateproject.git
