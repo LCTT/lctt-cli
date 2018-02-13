@@ -50,25 +50,31 @@
 
 # Found folder
   function folder(){
-      if [ -d "${LCTT}" ] && [[ $(grep -Ei '^(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$' "${LCTT}" && return 0) -eq 0 ]];then
-          echo yes
+      regex='^(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$'
+      if [[ $LCTT =~ $regex ]];then
+          return 0
       fi
+  #   if [ -d "${LCTT}" ] && [ $(grep -Ei '^(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$' `printenv LCTT` && return 0) -eq 0 ];then
+  #       echo yes
+  #   else
+  #       echo no
+  #   fi
   }
 
-  LCTT=$(echo "$1 $2" | \
-           grep --color=auto -Ei '^(-d)+[[:space:]]*(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$' || exit 1 | \
+  export LCTT=$(echo "$1 $2" | \
+           grep --color=auto -Ei '^(-d)+[[:space:]]*(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$' | \
            awk '/-d/{ print $2 }')
   folder
-  LCTT=$(awk '/Project=/{ print $2 }' /tmp/lctt.cfg)
+  export LCTT=$(awk -F 'Project=' '{ print $2 }' /tmp/lctt.cfg)
   folder
-  LCTT=$(locate --ignore-case --basename TranslateProject 2>/dev/null |\
+  export LCTT=$(locate --ignore-case --basename TranslateProject 2>/dev/null |\
            awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
   folder
-  LCTT=$(find / -iname TranslateProject 2>/dev/null |\
+  export LCTT=$(find / -iname TranslateProject 2>/dev/null |\
            awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
   folder
 
-  exit 0
+# printenv LCTT # FOR TEST
 
 # Update Github Repo
   cd $LCTT && git pull https://github.com/lctt/translateproject.git
