@@ -35,7 +35,7 @@
         bash $(dirname $(readlink -f $0))/options/commit/commit.sh
         ;;
       --check)
-        bash $(dirname $(readlink -f $0))/options/check/check.sh
+        bash $(dirname $(readlink -f $0))/options/check/check.sh $2 $3
         ;;
       --help)
         usage
