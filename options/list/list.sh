@@ -5,12 +5,12 @@
   set -e
 
 # Found folder
-  export LCTT=$(find / -iname TranslateProject 2>/dev/null |\
-  awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
+  source ~/.bashrc
+# export LCTT=$(find / -iname TranslateProject 2>/dev/null |\
+# awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
 
 # List Translating.
-  cd $LCTT
-  grep -RHEni "github.com/${LCTT_USER}" | awk -F ':1:' '/:1:/{ print $1 }'
+  grep -RHEni "github.com/${LCTT_USER}" $LCTT | awk -F ':1:' '/:1:/{ print $1 }'
   echo -e "\e[1;33mYou translating...\e[0m" && read
 
 # Core: Goto Find untransalte Acticle.

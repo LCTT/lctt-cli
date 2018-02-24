@@ -52,20 +52,16 @@
   function folder(){
       regex='^(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$'
       if [[ $LCTT =~ $regex ]];then
+          echo "export LCTT=$LCTT" >> ~/.bashrc
           return 0
       fi
-  #   if [ -d "${LCTT}" ] && [ $(grep -Ei '^(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$' `printenv LCTT` && return 0) -eq 0 ];then
-  #       echo yes
-  #   else
-  #       echo no
-  #   fi
   }
 
   export LCTT=$(echo "$1 $2" | \
            grep --color=auto -Ei '^(-d)+[[:space:]]*(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$' | \
            awk '/-d/{ print $2 }')
   folder
-  export LCTT=$(awk -F 'Project=' '{ print $2 }' /tmp/lctt.cfg)
+  export LCTT=$(awk -F 'Project=' '{ print $2 }' /tmp/lctt.cfg 2>/dev/null)
   folder
   export LCTT=$(locate --ignore-case --basename TranslateProject 2>/dev/null |\
            awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
