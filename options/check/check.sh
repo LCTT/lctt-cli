@@ -57,16 +57,16 @@
       fi
   }
 
-  export LCTT=$(echo "$1 $2" | \
+  LCTT=$(echo "$1 $2" | \
            grep --color=auto -Ei '^(-d)+[[:space:]]*(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$' | \
            awk '/-d/{ print $2 }')
   folder
-  export LCTT=$(awk -F 'Project=' '{ print $2 }' /tmp/lctt.cfg 2>/dev/null)
+  LCTT=$(awk -F 'Project=' '{ print $2 }' /tmp/lctt.cfg 2>/dev/null)
   folder
-  export LCTT=$(locate --ignore-case --basename TranslateProject 2>/dev/null |\
+  LCTT=$(locate --ignore-case --basename TranslateProject 2>/dev/null |\
            awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
   folder
-  export LCTT=$(find / -iname TranslateProject 2>/dev/null |\
+  LCTT=$(find / -iname TranslateProject 2>/dev/null |\
            awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
   folder
 
