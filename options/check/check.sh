@@ -4,7 +4,7 @@
   set -e
 
 # Check Soft whether exised.
-  for SOFT in git readlink ssh
+  for SOFT in git ssh pick
   do
     hash $SOFT 1>/dev/null 2>&1 || {
         echo "Error: COMMAND $SOFT could not be called"
@@ -48,8 +48,8 @@
         exit 1
   fi
 
-# Found folder
-  function folder(){
+# Found foundFolder
+  function foundFolder(){
       regex='^(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$'
       if [[ $LCTT =~ $regex ]];then
           echo "export LCTT=$LCTT" >> ~/.bashrc
@@ -60,15 +60,15 @@
   LCTT=$(echo "$1 $2" | \
            grep --color=auto -Ei '^(-d)+[[:space:]]*(/)+[a-zA-Z0-9|_|-|/]+(TranslateProject)$' | \
            awk '/-d/{ print $2 }')
-  folder
+  foundFolder
   LCTT=$(awk -F 'Project=' '{ print $2 }' /tmp/lctt.cfg 2>/dev/null)
-  folder
+  foundFolder
   LCTT=$(locate --ignore-case --basename TranslateProject 2>/dev/null |\
            awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
-  folder
+  foundFolder
   LCTT=$(find / -iname TranslateProject 2>/dev/null |\
            awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
-  folder
+  foundFolder
 
 # printenv LCTT # FOR TEST
 

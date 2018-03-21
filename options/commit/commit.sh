@@ -2,16 +2,22 @@
 # Find The Number.
 
 # Accept user input.
-  read -p "Please enter the number: " SELECT
-  NUMBER=$( cat /tmp/aa.txt | sed -n "$SELECT p" | xargs -0 )
-  NUMBER_PATH=$(find / -name "$NUMBER" 2>/dev/null )
-  echo $NUMBER
+  bySYS(){
+#     NUMBER_PATH=$(find / -iname "$(cat /tmp/aa.txt | pick)" -prune -a -exec /bin/bash -c return 0 \;)
+      NUMBER_PATH=$(find / -iname "$(cat /tmp/aa.txt | pick)" 2>/dev/null)
+  }
+  byUSER(){
+      read -p "Please enter the number: " SELECT
+      NUMBER=$(cat /tmp/aa.txt | sed -n "$SELECT p" | xargs -0)
+      NUMBER_PATH=$(find / -iname "$NUMBER" 2>/dev/null)
+  }
+  bySYS || byUSER
+  echo "$NUMBER_PATH"
 
 # Github -> Add file.
   cd $(dirname "$NUMBER_PATH")
 # Core: Write And Send.
-  sed -i "1i **translating by [$LCTT_USER](https://github.com/$LCTT_USER)**\n" "$NUMBER_PATH"
-  echo $NUMBER_PATH
+  sed -i "1i **translating by [$LCTT_USER](https://github.com/$LCTT_USER)** \n\n" "$NUMBER_PATH"
   git_time=$(date +%s)
   git branch ${git_time} master
   git checkout ${git_time}
