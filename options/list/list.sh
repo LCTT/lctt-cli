@@ -5,9 +5,7 @@
   set -e
 
 # Found folder
-  source ~/.bashrc
-# export LCTT=$(find / -iname TranslateProject 2>/dev/null |\
-# awk -F "TranslateProject"IGNORECASE=1 '{print $1}')
+  LCTT=$project
 
 # List Translating.
   grep -RHEni "github.com/${LCTT_USER}" $LCTT | awk -F ':1:' '/:1:/{ print $1 }'
