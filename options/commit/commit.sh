@@ -1,17 +1,14 @@
 #!/bin/bash
 # Find The Number.
 
+# var.
+  
+  LCTT_USER=$username
+
 # Accept user input.
-  bySYS(){
-#     NUMBER_PATH=$(find / -iname "$(cat /tmp/aa.txt | pick)" -prune -a -exec /bin/bash -c return 0 \;)
-      NUMBER_PATH=$(find / -iname "$(cat /tmp/aa.txt | pick)" 2>/dev/null)
-  }
-  byUSER(){
-      read -p "Please enter the number: " SELECT
-      NUMBER=$(cat /tmp/aa.txt | sed -n "$SELECT p" | xargs -0)
-      NUMBER_PATH=$(find / -iname "$NUMBER" 2>/dev/null)
-  }
-  bySYS || byUSER
+  read -p "Please enter the number: " SELECT
+  NUMBER=$(cat /tmp/aa.txt | sed -n "$SELECT p" | xargs -0)
+  NUMBER_PATH=$(find / -iname "$NUMBER" 2>/dev/null)
   echo "$NUMBER_PATH"
 
 # Github -> Add file.

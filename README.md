@@ -18,27 +18,10 @@ Script to help "LCTT" -->  **[TranslateProject](https://github.com/LCTT/Translat
 git clone https://github.com/LCTT/lctt-cli/ /usr/local/lctt-cli
 ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2
 ```
-### Solution ( Report By `--check` Option )
-
-```
-Q1: Error: OS Language
-A1: Try to set environment variable 'LANG=zh_CN.UTF-8'.
-```
-
-```
-Q2: Error: Configure user.name AND user.email
-A2: Configure user.name AND user.email INTO git repository. See More with TranslateProject Wiki.
-```
-
-```
-Q3: fatal: Not a git repository (or any of the parent directories): .git
-A3: Please execute `git clone git@github:<youname>/TranslateProject.git` in anywhere.
-```
 ## DIRECTOR 
 
 | LOCATION          | DIRECTOR                                 | DATE        |
 | ----------------- | ---------------------------------------- | ----------- |
-| **options/check** | *[leemeans](https://github.com/leemeans)* | 2018/2/6    |
 | options/commit    | [erlinux](https://github.com/erlinux)    | Jan 1, 2017 |
 | *options/list*    | [erlinux](https://github.com/erlinux)    | Jan 1, 2017 |
 
