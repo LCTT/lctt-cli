@@ -1,6 +1,6 @@
 #!/bin/bash
-# Version: 4.0
-# Author: jiwenkangatech@foxmail.com
+# Version: 5.0
+# Authors: jiwenkangatech@foxmail.com
 
 # Exit on exceptions.
   set -e

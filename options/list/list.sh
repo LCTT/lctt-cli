@@ -1,20 +1,14 @@
 #!/bin/bash
-# This Can LIST Article
+# Version: 5.0
+# Authors: jiwenkangatech@foxmail.com
 
-# Exit the exoeption.
-  set -e
-
-# Found folder
+# var.
   LCTT=$PROJECT
   LCTT_USER=$USERNAME
 
-# List Translating.
-# grep -RHEni "github.com/${LCTT_USER}" $LCTT | awk -F ':1:' '/:1:/{ print $1 }'
-# echo -e "\e[1;33mYou translating...\e[0m" && read
-
-# Core: Goto Find untransalte Acticle.
+# 切换到 TranslateProject 项目位置
   cd $LCTT/sources/
-  # Found folder And Enter.
+  # 找到未被翻译文章并列出
   ``grep -RHEi "translated|translating|fanyi|翻译中|申请翻译" | \
   awk -F ":" '{print $1}' | awk -F "/" '{print $2}'`` > /tmp/aaa.txt
   ``find -type f 2>/dev/null | sed -e "s#^[ . ]/##" | awk -F '/' '{print $2}' | grep -v yearbook2015 | \

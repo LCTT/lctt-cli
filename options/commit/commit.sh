@@ -1,18 +1,19 @@
 #!/bin/bash
-# Find The Number.
+# Version: 5.0
+# Authors: jiwenkangatech@foxmail.com
 
 # var.
   LCTT_USER=$USERNAME
 
-# Accept user input.
+# 接受用户输入
   read -p "Please enter the number: " SELECT
   NUMBER=$(cat /tmp/aa.txt | sed -n "$SELECT p" | xargs -0)
   NUMBER_PATH=$(find / -iname "$NUMBER" 2>/dev/null)
   echo "$NUMBER_PATH"
 
-# Github -> Add file.
+# 切换到 TranslateProject 项目位置
   cd $(dirname "$NUMBER_PATH")
-# Core: Write And Send.
+  # 选中文件并提交给 Github 等待进一步处理
   sed -i "1i **translating by [$LCTT_USER](https://github.com/$LCTT_USER)** \n\n" "$NUMBER_PATH"
   git_time=$(date +%s)
   git branch ${git_time} master
@@ -22,7 +23,7 @@
   git push origin ${git_time}
   git checkout master
 
-# Say Thx
+# 给志愿者一个回馈语
   test $? -eq 0 && {
   echo -e "\e[1;33m   Done.\e[0m"
   echo -e "\e[1;33mNext Pull New Requert,Please\e[0m"
