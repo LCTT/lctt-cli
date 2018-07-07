@@ -36,25 +36,22 @@ function check_cfg_exist() {
   fi
 }
 
-function set_var_to_golbal() {
-  function read_var_from_file(){
-    awk -F "$1=" '{ print $2}' /tmp/lctt.cfg 
-  }
-  export username=$(read_var_from_file username)
-  export project=$(read_var_from_file project)
-  export sshkey=$(read_var_from_file sshkey)
+function read_var_from_file(){
+  awk -F "$1=" '{ print $2}' /tmp/lctt.cfg 
 }
+export USERNAME=$(read_var_from_file username)
+export PROJECT=$(read_var_from_file project)
+export SSHKEY=$(read_var_from_file sshkey)
+
 
 function var_check() {
-  if [ -z $username ] && [ -z $project ];then
+  if [ -z $USERNAME ] && [ -z $PROJECT ];then
     logging ${RED} "\n\tERROR: LCTT-CLI Project need variable in configuration."
     Look_for_HELP
     return 1
-  elif [ -z $sshkey ];then
+  elif [ -z $SSHKEY ];then
     logging ${YELLOW} "\n\tWARNING: You did not fill in sshkey variable."
     return 2
-  else
-    echo "hi "$username" It is $(date +%T)"
   fi
 }
 
@@ -75,6 +72,7 @@ usage(){
 }
 
 if [ ! "$#" -lt 1  ];then
+  echo "hi"$USERNAME"! It is $(date +%T)"
   case $1 in
     --list)
       bash $(dirname $(readlink -f $0))/options/list/list.sh
@@ -86,8 +84,8 @@ if [ ! "$#" -lt 1  ];then
       usage
       ;;
    *)
-      echo "Please to use  \"$0 --help\"."
-      exit
+      echo "Please use  \"$0 --help\" to Get Help."
+      exit 2
       ;;
   esac
 else
@@ -96,7 +94,5 @@ fi
 
 # 检查配置文件是否存在
 check_cfg_exist
-# 读取内容并设为全局变量
-set_var_to_golbal
 # 确定变量有内容
 var_check

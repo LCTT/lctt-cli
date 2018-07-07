@@ -5,11 +5,12 @@
   set -e
 
 # Found folder
-  LCTT=$project
+  LCTT=$PROJECT
+  LCTT_USER=$USERNAME
 
 # List Translating.
-  grep -RHEni "github.com/${LCTT_USER}" $LCTT | awk -F ':1:' '/:1:/{ print $1 }'
-  echo -e "\e[1;33mYou translating...\e[0m" && read
+# grep -RHEni "github.com/${LCTT_USER}" $LCTT | awk -F ':1:' '/:1:/{ print $1 }'
+# echo -e "\e[1;33mYou translating...\e[0m" && read
 
 # Core: Goto Find untransalte Acticle.
   cd $LCTT/sources/
@@ -18,4 +19,4 @@
   awk -F ":" '{print $1}' | awk -F "/" '{print $2}'`` > /tmp/aaa.txt
   ``find -type f 2>/dev/null | sed -e "s#^[ . ]/##" | awk -F '/' '{print $2}' | grep -v yearbook2015 | \
   grep -v README.md``| grep -v "$( cat  /tmp/aaa.txt)"`` > /tmp/aa.txt
-  sed '/^$/d' /tmp/aa.txt | cat -n
+  sed '/^$/d' /tmp/aa.txt | cat -n | less

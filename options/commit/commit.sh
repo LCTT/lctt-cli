@@ -2,8 +2,7 @@
 # Find The Number.
 
 # var.
-  
-  LCTT_USER=$username
+  LCTT_USER=$USERNAME
 
 # Accept user input.
   read -p "Please enter the number: " SELECT
