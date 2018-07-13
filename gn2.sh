@@ -51,7 +51,7 @@ function set_var_to_files(){
 # export 为了其他文件能读取变量 ; export -f 为了$0能读取变量
 export -f set_var_to_files
 # 读取应用以后还需要执行
-set_var_to_files
+# set_var_to_files
 
 function var_check() {
   if [ -z $USERNAME ] && [ -z $PROJECT ];then
@@ -63,7 +63,14 @@ function var_check() {
   fi
 }
 
-#--------------------#
+# 检查配置文件是否存在
+check_cfg_exist
+# 如果变量存在，即读取文本
+set_var_to_files
+# 确定变量有内容
+var_check
+
+#------------------------------#
 
 usage(){
   echo "Online help: <https://github.com/lctt/lctt-cli>"
@@ -98,8 +105,3 @@ if [ ! "$#" -lt 1  ];then
 else
       usage
 fi
-
-# 检查配置文件是否存在
-check_cfg_exist
-# 确定变量有内容
-var_check
