@@ -15,8 +15,8 @@
 ### Installation
 
 ```
-git clone https://github.com/LCTT/lctt-cli/ /usr/local/lctt-cli
-ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2
+sudo git clone https://github.com/LCTT/lctt-cli/ /usr/local/lctt-cli
+sudo ln -s /usr/local/lctt-cli/gn2.sh /usr/bin/gn2
 ```
 ## DIRECTOR 
 
