@@ -9,6 +9,9 @@
   export NWF=$(mktemp)
 
 # 切换到 TranslateProject 项目位置
+  cd $LCTT
+  git remote add lctt https://github.com/lctt/TranslateProject
+  git pull lctt master
   cd $LCTT/sources/
   # 找到未被翻译文章并列出
   grep -RHEi "translated|translating|fanyi|翻译中|申请翻译" | \
